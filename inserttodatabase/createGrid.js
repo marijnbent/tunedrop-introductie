@@ -24,10 +24,10 @@ function init() {
     console.log(y);
     //ajaxWriteToDatabase();
     fillTable();
+    //writeToDatabase();
 }
 
 function fillTable() {
-
     for (var i = 0; i < latStart.length; i++) {
         $("#grid-table")
             .append($('<tr>')
@@ -50,6 +50,22 @@ function fillTable() {
                     .text(y[i])
                 )
             )
-
     }
+}
+
+function writeToDatabase(){
+    $.ajax({
+        type: "POST",
+        data: {
+            latStart: latStart,
+            lngStart: lngStart,
+            latEnd: latEnd,
+            lngEnd: lngEnd,
+            x: x,
+            y: y
+        },
+        url: "writeToDataBase.php",
+        success: console.log("Data sent")
+
+    });
 }
