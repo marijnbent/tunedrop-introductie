@@ -36,18 +36,8 @@ function init() {
             }
         });
     });
-
     requestMarkerLocations(pointRef);
-
 }
-//    pointRef.update({
-//        200: {
-//            teamId: "rood01",
-//            photo: "http://cooler.png",
-//            lat: 51.925216,
-//            lng: 4.469301
-//        }
-//    });
 
 //    pointRef.set({
 //        235: {
@@ -55,31 +45,9 @@ function init() {
 //            photo: "http://cool.png",
 //            lat: 40.200001,
 //            lng: 20.9999
-//        },
-//        245: {
-//            teamId: "rood01",
-//            photo: "http://cool.png",
-//            lat: 40.200001,
-//            lng: 20.9999
 //        }
 //    });
 
-
-//    $('#form').keypress(function (e) {
-//        if (e.keyCode == 13) {
-////            console.log('Keypress recognized');
-//            var lat = $('#lat').val();
-//            var lng = $('#lng').val();
-//            var teamId = $('#teamId').val();
-//            var gridId = $('#gridId').val();
-//            var photo = $('#photo').val();
-////            console.log(lat + lng + teamId + gridId + photo);
-//            myDataRef.push({lat: lat, lng: lng, teamId: teamId, gridId: gridId, photo: photo});
-////            $('#messageInput').val('');
-//        }
-//
-
-//
 
 
 function requestMarkerLocations(pointRef) {
@@ -111,17 +79,3 @@ function addMarker(location) {
         map: map
     });
 }
-//
-
-//    //For each location, create marker
-//
-//    $.each(fireData, function( key, value ) {
-//        console.log( key + ": " + value );
-//    });
-
-//    var markerLatLng = new google.maps.LatLng(-25.363882,131.044922);
-//    var marker = new google.maps.Marker({
-//        position: markerLatLng,
-//        map: map,
-//        title: 'Blanco'
-//    });

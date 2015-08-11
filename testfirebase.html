@@ -15,18 +15,7 @@
 
     <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
-    <!--<script type="text/javascript">-->
-        <!--function initialize() {-->
-            <!--var mapOptions = {-->
-                <!--center: {lat: 51.924420, lng: 4.477733},-->
-                <!--zoom: 14-->
-            <!--};-->
-            <!--var map = new google.maps.Map(document.getElementById('map-canvas'),-->
-                    <!--mapOptions);-->
 
-        <!--}-->
-        <!--google.maps.event.addDomListener(window, 'load', initialize);-->
-    <!--</script>-->
 </head>
 <body>
 <div id="map-canvas" style="height: 500px;"></div>
@@ -64,105 +53,6 @@
     </div>
 </div>
 
-
-<!--<script>-->
-    <!--var myDataRef = new Firebase('https://tunedrop.firebaseio.com/');-->
-    <!--var pointRef = myDataRef.child("points");-->
-
-    <!--$("#form").submit(function (event) {-->
-        <!--event.preventDefault();-->
-        <!---->
-        <!--var lat = $('#lat').val();-->
-        <!--var lng = $('#lng').val();-->
-        <!--var teamId = $('#teamId').val();-->
-        <!--var gridId = $('#gridId').val();-->
-        <!--var photo = $('#photo').val();-->
-
-        <!--pointRef.Update({-->
-            <!--240: {-->
-                <!--teamId: teamId,-->
-                <!--photo: gridId,-->
-                <!--lat: lat,-->
-                <!--lng: lng-->
-            <!--}-->
-        <!--});-->
-
-
-        <!--alert("Handler for .submit() called.");-->
-    <!--});-->
-
-<!--//    pointRef.update({-->
-<!--//        200: {-->
-<!--//            teamId: "rood01",-->
-<!--//            photo: "http://cooler.png",-->
-<!--//            lat: 51.925216,-->
-<!--//            lng: 4.469301-->
-<!--//        }-->
-<!--//    });-->
-
-    <!--//    pointRef.set({-->
-    <!--//        235: {-->
-    <!--//            teamId: "rood01",-->
-    <!--//            photo: "http://cool.png",-->
-    <!--//            lat: 40.200001,-->
-    <!--//            lng: 20.9999-->
-    <!--//        },-->
-    <!--//        245: {-->
-    <!--//            teamId: "rood01",-->
-    <!--//            photo: "http://cool.png",-->
-    <!--//            lat: 40.200001,-->
-    <!--//            lng: 20.9999-->
-    <!--//        }-->
-    <!--//    });-->
-
-
-    <!--//    $('#form').keypress(function (e) {-->
-    <!--//        if (e.keyCode == 13) {-->
-    <!--////            console.log('Keypress recognized');-->
-    <!--//            var lat = $('#lat').val();-->
-    <!--//            var lng = $('#lng').val();-->
-    <!--//            var teamId = $('#teamId').val();-->
-    <!--//            var gridId = $('#gridId').val();-->
-    <!--//            var photo = $('#photo').val();-->
-    <!--////            console.log(lat + lng + teamId + gridId + photo);-->
-    <!--//            myDataRef.push({lat: lat, lng: lng, teamId: teamId, gridId: gridId, photo: photo});-->
-    <!--////            $('#messageInput').val('');-->
-    <!--//        }-->
-    <!--//-->
-
-    <!--//-->
-    <!--//Request marker locations, put in array-->
-    <!--var fireData;-->
-
-    <!--pointRef.on("value", function (snapshot) {-->
-        <!--console.log(snapshot.val());-->
-        <!--fireData = snapshot.val();-->
-
-        <!--for (var i = 0; i < 380; i++) {-->
-            <!--if (fireData[i] != null) {-->
-                <!--console.log(fireData[i]);-->
-            <!--}-->
-        <!--}-->
-
-    <!--}, function (errorObject) {-->
-        <!--console.log("The read failed: " + errorObject.code);-->
-    <!--});-->
-    <!--//-->
-
-    <!--//    //For each location, create marker-->
-    <!--//-->
-    <!--//    $.each(fireData, function( key, value ) {-->
-    <!--//        console.log( key + ": " + value );-->
-    <!--//    });-->
-
-    <!--//    var markerLatLng = new google.maps.LatLng(-25.363882,131.044922);-->
-    <!--//    var marker = new google.maps.Marker({-->
-    <!--//        position: markerLatLng,-->
-    <!--//        map: map,-->
-    <!--//        title: 'Blanco'-->
-    <!--//    });-->
-
-<!--</script>-->
 <script type="text/javascript"
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCdil7rzluHaBvHce7SgaUMFMhyuIQmrNw"></script>
 
