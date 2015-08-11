@@ -1,5 +1,5 @@
 var map;
-
+var markers = [];
 
 init();
 google.maps.event.addDomListener(window, 'load', initialize);
@@ -28,18 +28,15 @@ function init() {
         var lat = $('#lat').val();
         var lng = $('#lng').val();
         var teamId = $('#teamId').val();
-        var gridId = $('#gridId').val();
         var photo = $('#photo').val();
+        var gridId = $('#gridId').val();
 
-        //Update or set gridId
-        pointRef.update({
-            240: {
-                teamId: teamId,
-                photo: gridId,
-                lat: lat,
-                lng: lng
-            }
-        });
+        //Create new objects with gridId as key, so it's dynamic
+        var markerInfo = {};
+        markerInfo[gridId] = {teamId: teamId, photo: photo, lat: lat, lng: lng};
+
+        //And push it to the Firebase
+        pointRef.update(markerInfo);
     });
 
     requestMarkerLocations(pointRef);
@@ -53,6 +50,11 @@ function requestMarkerLocations(pointRef) {
     pointRef.on("value", function (snapshot) {
         console.log(snapshot.val());
         fireData = snapshot.val();
+
+        //Delete old markers
+        for (var ii = 0; ii < markers.length; ii++) {
+            markers[ii].setMap(null);
+        }
 
         //For each gridId, add marker
         for (var i = 0; i < 380; i++) {
@@ -76,4 +78,5 @@ function addMarker(location) {
         position: location,
         map: map
     });
+    markers.push(marker);
 }
