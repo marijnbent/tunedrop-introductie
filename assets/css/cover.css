@@ -4,8 +4,8 @@
 
 /*Google maps*/
 #map-canvas {
-    min-width: 500px;
-    min-height: 400px;
+    width: 100%;
+    height: 300px;
 }
 
 /* Links */
