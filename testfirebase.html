@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
     <style type="text/css">
         html, body, #map-canvas {
             height: 100%;
@@ -8,101 +12,162 @@
             padding: 0;
         }
     </style>
-    <script type="text/javascript"
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCdil7rzluHaBvHce7SgaUMFMhyuIQmrNw">
-    </script>
+
     <script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
-    <script type="text/javascript">
-        function initialize() {
-            var mapOptions = {
-                center: {lat: 51.924420, lng: 4.477733},
-                zoom: 14
-            };
-            var map = new google.maps.Map(document.getElementById('map-canvas'),
-                    mapOptions);
+    <!--<script type="text/javascript">-->
+        <!--function initialize() {-->
+            <!--var mapOptions = {-->
+                <!--center: {lat: 51.924420, lng: 4.477733},-->
+                <!--zoom: 14-->
+            <!--};-->
+            <!--var map = new google.maps.Map(document.getElementById('map-canvas'),-->
+                    <!--mapOptions);-->
 
-        }
-        google.maps.event.addDomListener(window, 'load', initialize);
-    </script>
+        <!--}-->
+        <!--google.maps.event.addDomListener(window, 'load', initialize);-->
+    <!--</script>-->
 </head>
 <body>
 <div id="map-canvas" style="height: 500px;"></div>
-<div id="form">
-    <input type='text' id='lat' placeholder='latitude'>
-    <input type='text' id='lng' placeholder='longitude'>
-    <input type='text' id='teamId' placeholder='teamId'>
-    <input type='text' id='gridId' placeholder='gridId'>
-    <input type='text' id='photo' placeholder='photo url'>
+<div class="container">
+    <div class="row" style="margin-top:20px;">
+        <div class="col-md-6">
+
+            <form id="form">
+                <div class="form-group">
+                    <label for="lat">Latitude</label>
+                    <input type='text' class="form-control" id='lat' placeholder='latitude'>
+                </div>
+                <div class="form-group">
+                    <label for="lng">Longitude</label>
+                    <input type='text' class="form-control" id='lng' placeholder='longitude'>
+                </div>
+                <div class="form-group">
+                    <label for="teamId">TeamId</label>
+                    <input type='text' class="form-control" id='teamId' placeholder='teamId'>
+                </div>
+                <div class="form-group">
+                    <label for="gridId">GridId</label>
+                    <input type='text' class="form-control" id='gridId' placeholder='gridId'>
+                </div>
+                <div class="form-group">
+                    <label for="photo">Photo url</label>
+                    <input type='text' class="form-control" id='photo' placeholder='photo url'>
+                </div>
+
+                <button type="submit" id="submit" class="btn btn-default">Submit</button>
+            </form>
+
+        </div>
+        <div class="col-md-6">.col-md-4</div>
+    </div>
 </div>
-<div id="messagesDiv"></div>
-<script>
-    var myDataRef = new Firebase('https://tunedrop.firebaseio.com/');
-    var pointRef = myDataRef.child("points");
-
-//        pointRef.push({
-//            2335: {
-//                teamId: "blauw01",
-//                photo: "http://cooler.png",
-//                lat: 51.925216,
-//                lng: 4.469301
-//            }
-//        });
-
-    //    pointRef.set({
-    //        235: {
-    //            teamId: "rood01",
-    //            photo: "http://cool.png",
-    //            lat: 40.200001,
-    //            lng: 20.9999
-    //        },
-    //        245: {
-    //            teamId: "rood01",
-    //            photo: "http://cool.png",
-    //            lat: 40.200001,
-    //            lng: 20.9999
-    //        }
-    //    });
 
 
-    //    $('#form').keypress(function (e) {
-    //        if (e.keyCode == 13) {
-    ////            console.log('Keypress recognized');
-    //            var lat = $('#lat').val();
-    //            var lng = $('#lng').val();
-    //            var teamId = $('#teamId').val();
-    //            var gridId = $('#gridId').val();
-    //            var photo = $('#photo').val();
-    ////            console.log(lat + lng + teamId + gridId + photo);
-    //            myDataRef.push({lat: lat, lng: lng, teamId: teamId, gridId: gridId, photo: photo});
-    ////            $('#messageInput').val('');
-    //        }
-    //
+<!--<script>-->
+    <!--var myDataRef = new Firebase('https://tunedrop.firebaseio.com/');-->
+    <!--var pointRef = myDataRef.child("points");-->
 
-    //
-    //Request marker locations, put in array
-    var fireData;
+    <!--$("#form").submit(function (event) {-->
+        <!--event.preventDefault();-->
+        <!---->
+        <!--var lat = $('#lat').val();-->
+        <!--var lng = $('#lng').val();-->
+        <!--var teamId = $('#teamId').val();-->
+        <!--var gridId = $('#gridId').val();-->
+        <!--var photo = $('#photo').val();-->
 
-    pointRef.on("value", function (snapshot) {
-        console.log(snapshot.val());
-        fireData = snapshot.val();
-    }, function (errorObject) {
-        console.log("The read failed: " + errorObject.code);
-    });
-//
-//    //For each location, create marker
-//
-//    $.each(fireData, function( key, value ) {
-//        console.log( key + ": " + value );
-//    });
+        <!--pointRef.Update({-->
+            <!--240: {-->
+                <!--teamId: teamId,-->
+                <!--photo: gridId,-->
+                <!--lat: lat,-->
+                <!--lng: lng-->
+            <!--}-->
+        <!--});-->
 
-//    var markerLatLng = new google.maps.LatLng(-25.363882,131.044922);
-//    var marker = new google.maps.Marker({
-//        position: markerLatLng,
-//        map: map,
-//        title: 'Blanco'
-//    });
 
-</script>
+        <!--alert("Handler for .submit() called.");-->
+    <!--});-->
+
+<!--//    pointRef.update({-->
+<!--//        200: {-->
+<!--//            teamId: "rood01",-->
+<!--//            photo: "http://cooler.png",-->
+<!--//            lat: 51.925216,-->
+<!--//            lng: 4.469301-->
+<!--//        }-->
+<!--//    });-->
+
+    <!--//    pointRef.set({-->
+    <!--//        235: {-->
+    <!--//            teamId: "rood01",-->
+    <!--//            photo: "http://cool.png",-->
+    <!--//            lat: 40.200001,-->
+    <!--//            lng: 20.9999-->
+    <!--//        },-->
+    <!--//        245: {-->
+    <!--//            teamId: "rood01",-->
+    <!--//            photo: "http://cool.png",-->
+    <!--//            lat: 40.200001,-->
+    <!--//            lng: 20.9999-->
+    <!--//        }-->
+    <!--//    });-->
+
+
+    <!--//    $('#form').keypress(function (e) {-->
+    <!--//        if (e.keyCode == 13) {-->
+    <!--////            console.log('Keypress recognized');-->
+    <!--//            var lat = $('#lat').val();-->
+    <!--//            var lng = $('#lng').val();-->
+    <!--//            var teamId = $('#teamId').val();-->
+    <!--//            var gridId = $('#gridId').val();-->
+    <!--//            var photo = $('#photo').val();-->
+    <!--////            console.log(lat + lng + teamId + gridId + photo);-->
+    <!--//            myDataRef.push({lat: lat, lng: lng, teamId: teamId, gridId: gridId, photo: photo});-->
+    <!--////            $('#messageInput').val('');-->
+    <!--//        }-->
+    <!--//-->
+
+    <!--//-->
+    <!--//Request marker locations, put in array-->
+    <!--var fireData;-->
+
+    <!--pointRef.on("value", function (snapshot) {-->
+        <!--console.log(snapshot.val());-->
+        <!--fireData = snapshot.val();-->
+
+        <!--for (var i = 0; i < 380; i++) {-->
+            <!--if (fireData[i] != null) {-->
+                <!--console.log(fireData[i]);-->
+            <!--}-->
+        <!--}-->
+
+    <!--}, function (errorObject) {-->
+        <!--console.log("The read failed: " + errorObject.code);-->
+    <!--});-->
+    <!--//-->
+
+    <!--//    //For each location, create marker-->
+    <!--//-->
+    <!--//    $.each(fireData, function( key, value ) {-->
+    <!--//        console.log( key + ": " + value );-->
+    <!--//    });-->
+
+    <!--//    var markerLatLng = new google.maps.LatLng(-25.363882,131.044922);-->
+    <!--//    var marker = new google.maps.Marker({-->
+    <!--//        position: markerLatLng,-->
+    <!--//        map: map,-->
+    <!--//        title: 'Blanco'-->
+    <!--//    });-->
+
+<!--</script>-->
+<script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCdil7rzluHaBvHce7SgaUMFMhyuIQmrNw"></script>
+
+<script type="text/javascript"
+        src="testfirebase.js"></script>
+
 </body>
 </html>
