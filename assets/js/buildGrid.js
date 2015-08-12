@@ -28,6 +28,7 @@ function getGridHandler(gridData) {
         google.maps.event.addListener(rectangle, 'click', function () {
             console.log(this.x + "X, " + this.y + "Y.");
         });
-    })
+    });
+    getLocation();
 }
 
