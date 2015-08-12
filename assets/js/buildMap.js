@@ -1,5 +1,3 @@
-var map;
-
 function buildMap() {
 
 //Map variables
@@ -12,7 +10,7 @@ function buildMap() {
 
 //Init function
 
-    function init() {
+    function mapInit() {
         var mapOptions = {
             center: center,
             zoom: 12,
@@ -134,19 +132,15 @@ function buildMap() {
 
             });
 
-            //// Reference to the div that groups the close button elements.
-            //var iwCloseBtn = iwOuter.next();
-            //// Apply the desired effect to the close button
-            //iwCloseBtn.css({
-            //    opacity: '1',
-            //    right: '60px',
-            //    top: '25px',
-            //    'border-radius': '13px'
-            //});
+            // Reference to the div that groups the close button elements.
+            var iwCloseBtn = iwOuter.next();
+            // Apply the desired effect to the close button
+            iwCloseBtn.css({
+                display: 'none'
+            });
         });
-
     }
 
-    google.maps.event.addDomListener(window, 'load', init);
+    google.maps.event.addDomListener(window, 'load', mapInit);
 
 }

@@ -4,6 +4,7 @@
 
 function getGridHandler(gridData) {
     var rectangle;
+    console.log(gridData);
     $.each(gridData, function (i, squareData) {
         rectangle = new google.maps.Rectangle({
             strokeOpacity: 1,
@@ -27,8 +28,6 @@ function getGridHandler(gridData) {
         google.maps.event.addListener(rectangle, 'click', function () {
             console.log(this.x + "X, " + this.y + "Y.");
         });
-
     })
-
 }
 
