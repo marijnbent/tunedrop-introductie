@@ -57,7 +57,7 @@ function requestMarkerLocations(pointRef) {
         }
 
         //For each gridId, add marker
-        for (var i = 0; i < 380; i++) {
+        for (var i = 0; i < 636; i++) { //TODO DO WE NEED THIS?
             //Don't create a marker if gridId isn't in the firebase
             if (fireData[i] != null) {
                 console.log(fireData[i]);
