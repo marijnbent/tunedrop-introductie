@@ -1,5 +1,6 @@
-var gridArray = [];
 var map;
+var gridArray = [];
+
 
 $(init);
 
@@ -9,7 +10,6 @@ $(init);
 
 function init(){
     buildMap();
-    getGrid();
 }
 
 function getGrid(){

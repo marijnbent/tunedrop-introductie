@@ -139,6 +139,9 @@ function buildMap() {
                 display: 'none'
             });
         });
+
+        //After building the map, get the grid and build it.
+        getGrid();
     }
 
     google.maps.event.addDomListener(window, 'load', mapInit);
