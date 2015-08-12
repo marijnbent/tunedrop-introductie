@@ -33,7 +33,7 @@ function init() {
 
         //Create new objects with gridId as key, so it's dynamic
         var markerInfo = {};
-        markerInfo[gridId] = {teamId: teamId, photo: photo, lat: lat, lng: lng};
+        markerInfo[gridId] = {teamId: teamId, photo: photo, lat: lat, lng: lng, gridId: gridId};
 
         //And push it to the Firebase
         pointRef.update(markerInfo);
@@ -64,6 +64,7 @@ function requestMarkerLocations(pointRef) {
                 var marker = fireData[i];
                 var latlng = new google.maps.LatLng(marker.lat, marker.lng);
                 addMarker(latlng);
+                addColorToGrid(marker.gridId)
             }
         }
     }, function (errorObject) {
@@ -79,4 +80,8 @@ function addMarker(location) {
         map: map
     });
     markers.push(marker);
+}
+
+function addColorToGrid(gridId) {
+    // Background color for gridId
 }
