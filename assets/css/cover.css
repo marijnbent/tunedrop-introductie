@@ -11,7 +11,7 @@
 }
 
 .masthead-brand {
-    color: #e8100d;
+    color: #ffffff;
 }
 
 .page-title {
@@ -89,6 +89,13 @@ body {
 /* Padding for spacing */
 .inner {
     padding: 30px;
+}
+
+.inner-navbar{
+    background-color: #670a09;
+    padding: 30px;
+    border-radius: 0 0 10px 10px;
+
 }
 
 /* Header */
