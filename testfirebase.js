@@ -85,3 +85,16 @@ function addMarker(location) {
 function addColorToGrid(gridId) {
     // Background color for gridId
 }
+
+function sendCurrentPosition(myDataRef) {
+//Save databaselocation for points
+    var currentPositionRef = myDataRef.child("currentPosition");
+    var teamId = 1;
+    var lat = 1;
+    var lng = 1;
+    var markerInfo = {};
+    teamPosition[teamId] = {lat: lat, lng: lng};
+
+//And push it to the Firebase
+    currentPositionRef.update(teamPosition);
+}
