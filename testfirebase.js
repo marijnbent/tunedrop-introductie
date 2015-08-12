@@ -2,7 +2,7 @@ var map;
 var markers = [];
 
 init();
-google.maps.event.addDomListener(window, 'load', initialize);
+google.maps.event.addDomListener(window, 'load', init);
 
 
 function init() {

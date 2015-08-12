@@ -1,11 +1,28 @@
-/*
- * Globals
- */
-
 /*Google maps*/
 #map-canvas {
+    margin: 0;
+    padding: 0;
     width: 100%;
-    height: 300px;
+    height: 500px;
+    border: 5px solid #9b9b9b;
+    border-radius: 5px;
+}
+
+/* Removes logo and text from map */
+a[href^="http://maps.google.com/maps"] {
+    display: none !important
+}
+
+a[href^="https://maps.google.com/maps"] {
+    display: none !important
+}
+
+.gmnoprint a, .gmnoprint span, .gm-style-cc {
+    display: none;
+}
+
+.gmnoprint div {
+    background: none !important;
 }
 
 /* Links */
@@ -25,10 +42,7 @@ a:hover {
     border: 1px solid #fff;
 }
 
-/*
- * Base structure
- */
-
+/* Base structure */
 html,
 body {
     height: 100%;
@@ -38,7 +52,6 @@ body {
 body {
     color: #fff;
     text-align: center;
-    text-shadow: 0 1px 3px rgba(0, 0, 0, .5);
 }
 
 /* Extra markup and styles for table-esque vertical and horizontal centering */
@@ -66,9 +79,7 @@ body {
     padding: 30px;
 }
 
-/*
- * Header
- */
+/* Header */
 .masthead-brand {
     margin-top: 10px;
     margin-bottom: 10px;
@@ -116,10 +127,7 @@ body {
     }
 }
 
-/*
- * Cover
- */
-
+/* Cover */
 .cover {
     padding: 0 20px;
 }
@@ -129,19 +137,13 @@ body {
     font-weight: bold;
 }
 
-/*
- * Footer
- */
-
+/* Footer */
 .mastfoot {
     color: #999; /* IE8 proofing */
     color: rgba(255, 255, 255, .5);
 }
 
-/*
- * Affix and center
- */
-
+/* Affix and center */
 @media (min-width: 768px) {
     /* Pull out the header and footer */
     .masthead {
@@ -174,3 +176,68 @@ body {
         width: 700px;
     }
 }
+
+/* InfoWindow styling */
+.gm-style-iw {
+    width: 300px !important;
+    top: 15px !important;
+    left: 0 !important;
+    background-color: #fff;
+    border: 1px solid #080808;
+    border-radius: 5px 5px 10px 10px;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#iw-container {
+    padding-bottom: 10px;
+    background: url("../img/icon/infowindowBackground.png") repeat;
+
+}
+
+#iw-container .iw-title {
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 22px;
+    font-weight: 400;
+    padding: 10px;
+    background-color: #e8100d;
+    color: #ffffff;
+    border-radius: 3px 3px 0 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+
+}
+
+.iw-subTitle {
+    color: #080808;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 5px 0;
+    text-transform: uppercase;
+}
+
+
+#iw-container .iw-content {
+    color: #e8100d;
+    font-size: 13px;
+    line-height: 18px;
+    font-weight: 400;
+    margin-right: 1px;
+    padding: 5px 5px 5px 15px;
+    /*max-height: 150px;*/
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+#iw-container .iw-content p {
+    text-align: left;
+    margin: 0;
+    color: #333333;
+}
+
+.iw-footer{
+    font-size: 10px;
+    color: #e8100d;
+    font-weight: 500;
+}
+
