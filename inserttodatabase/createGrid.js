@@ -22,7 +22,6 @@ function init() {
         }
     }
     console.log(y);
-    //ajaxWriteToDatabase();
     fillTable();
     //writeToDatabase();
 }
