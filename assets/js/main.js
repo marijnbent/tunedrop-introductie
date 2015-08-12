@@ -12,9 +12,11 @@ function init(){
 function getGrid(){
     $.ajax({
         dataType: "json",
-        url: 'json.php',
-        data: {tag: searchTag},
-        success: tagDataCallback
+        url: 'ajaxCalls.php',
+        data: {config: 0},
+        success: getGridHandler
     });
 }
+
+
 
