@@ -1,5 +1,6 @@
 var map;
 var gridArray = [];
+var currentGrid;
 
 
 $(init);
