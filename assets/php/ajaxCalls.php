@@ -18,14 +18,8 @@ if (isset($_GET['config'])) {
   , g.lngEnd
   , g.X
   , g.Y
-  , MAX(p.teamId) teamId
 FROM grids g
-  LEFT JOIN points p ON p.gridId = g.id
-GROUP BY
-    g.id
-  , g.latStart
-  , g.latEnd
-  , g.lngStart";
+";
             $queryResult = mysqli_query($connect, $query);
             foreach ($queryResult as $row) {
                 $jsonArray[$count]['gridId'] = $row['id'];
@@ -33,7 +27,9 @@ GROUP BY
                 $jsonArray[$count]['lngStart'] = $row['lngStart'];
                 $jsonArray[$count]['latEnd'] = $row['latEnd'];
                 $jsonArray[$count]['lngEnd'] = $row['lngEnd'];
-                $jsonArray[$count]['teamId'] = $row['teamId'];
+
+                $jsonArray[$count]['x'] = $row['X'];
+                $jsonArray[$count]['y'] = $row['Y'];
                 $count++;
             }
             header('Content-Type: application/json');

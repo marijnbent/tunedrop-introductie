@@ -25,11 +25,6 @@ function queryToDatabase($dbLink, $query)
     }
 }
 
-//These comments, it just makes a really strong connection don't you think. Here we are, you and me, alone.
-//I wrote these little pieces of grey matter specially for you, I know you're gonna read them some day and you
-//will be thinking about me.
-// Okay.. This is maybe a little bit creepy. Let me enlighten you with this beautiful function:
-
 /**
  *
  * Function which returns the data from database and puts it in an array

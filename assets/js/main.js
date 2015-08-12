@@ -12,7 +12,7 @@ function init(){
 function getGrid(){
     $.ajax({
         dataType: "json",
-        url: 'ajaxCalls.php',
+        url: 'assets/php/ajaxCalls.php',
         data: {config: 0},
         success: getGridHandler
     });
