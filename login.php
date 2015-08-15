@@ -8,7 +8,7 @@ require_once 'assets/php/password-validation.php';
 
 //Checking if you're already logged in. If you are, sends you back to the secured page.
 if (isset($_SESSION['loggedIn'])) {
-	header("Location: secure.php");
+	header("Location: index.html");
 	exit;
 }
 
@@ -22,11 +22,11 @@ if (isset($_POST['submit'])) {
 	//Anti sql injection via the input field and put the values of the form to variables.
 	$teamName = dataFilter($_POST['teamName'], $dbLink);
 	//Create query to collect the email and password from database.
-	$select = "SELECT * FROM users
+	$select = "SELECT * FROM teams
 			   WHERE `name` = '" . $teamName . "'";
 	//Send query to the function mySqlConnection with the query, config settings and dbconnection.
 	$result = queryToDatabase($dbLink, $select);
-	$user = resultToArray($result);
+	$user = queryToArray($result);
 	$correctPassword = $user[0]['password'];
 	$salt = $user[0]['salt'];
 	$inputPassword = hashPassword($salt, $_POST['password']);
@@ -44,12 +44,12 @@ if (isset($_POST['submit'])) {
 			//Aan het eind van wizard firstTimeLogin als 1 zetten als we foto hebben en teamnaam etc.
 			exit;
 			//Else, we can start the game
-		} else if ($user[0]['firstTimeLogin'] == 1 ) {
+		} else if ($user[0]['firstTimeLogin'] == 1) {
 
 			$_SESSION['teamSelfChosenTeamName'] = $user[0]['selfChosenTeamName'];
 			$_SESSION['teamPhoto'] = $user[0]['photo'];
 
-			header("Location: index.php");
+			header("Location: index.html");
 			exit;
 		} else {
 			echo "An error occurred. Please contact the school.";
@@ -63,24 +63,49 @@ if (isset($_POST['submit'])) {
 
 ?>
 
-//TODO header
-<div class="row">
-		<section class="col-md-12">
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
 
-			<form action="<?= $_SERVER['PHP_SELF']; ?>" method="POST">
-				<div class="form-group">
-					<label for="teamName">Teamnaam:</label>
-					<input name="teamName" type="text" id="teamName" class="form-control" required>
-				</div>
-				<div class="form-group">
-					<label for="password">Wachtwoord:</label>
-					<input name="password" type="password" id="password" class="form-control" required>
-				</div>
+	<title>TuneDrop</title>
+	<!-- Bootstrap core CSS -->
+	<link href="assets/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Custom styles for this template -->
+	<link href="assets/css/cover.css" rel="stylesheet">
+	<!-- Google Maps API -->
+	<script src="https://maps.googleapis.com/maps/api/js"></script>
+</head>
+<body>
 
-				<input type="submit" name="submit" id="submit" class="btn btn-default" value="Inloggen">
+<div class="site-wrapper">
+	<div class="container">
 
-			</form>
-		</section>
+		<div class="row">
+			<section class="col-md-12">
+
+				<form action="<?= $_SERVER['PHP_SELF']; ?>" method="POST">
+					<div class="form-group">
+						<label for="teamName">Teamnaam:</label>
+						<input name="teamName" type="text" id="teamName" class="form-control" required>
+					</div>
+					<div class="form-group">
+						<label for="password">Wachtwoord:</label>
+						<input name="password" type="password" id="password" class="form-control" required>
+					</div>
+
+					<input type="submit" name="submit" id="submit" class="btn btn-default" value="Inloggen">
+
+				</form>
+			</section>
+		</div>
+
 	</div>
+</div>
 
-//TODO Footer
+
+</body>
+</html>

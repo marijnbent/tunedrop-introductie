@@ -19,7 +19,7 @@ if (isset($_POST['submitRegister'])) {
 		$salt = generateSalt();
 		$hash = hashPassword($salt, $_POST['password']);
 
-		$insert = "INSERT INTO `users` (`name`, `password`, `salt`) VALUES ('" . $name . "', '" . $hash . "', '" . $salt . "')";
+		$insert = "INSERT INTO `teams` (`name`, `password`, `salt`, `firstTimeLogin`, `admin`) VALUES ('" . $name . "', '" . $hash . "', '" . $salt . "', 0, 0 )";
 		queryToDatabase($dbLink, $insert);
 		header("Location: login.php?registered");
 		exit;
@@ -31,26 +31,58 @@ if (isset($_POST['submitRegister'])) {
 
 ?>
 
-//TODO HEADER
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
 
-<span>Heeft u al een account? </span><a href="login.php">Ga naar de login pagina.</a>
+	<title>TuneDrop</title>
+	<!-- Bootstrap core CSS -->
+	<link href="assets/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Custom styles for this template -->
+	<link href="assets/css/cover.css" rel="stylesheet">
+	<!-- Google Maps API -->
+	<script src="https://maps.googleapis.com/maps/api/js"></script>
+</head>
+<body>
 
-<form action="<?= $_SERVER['PHP_SELF']; ?>" method="POST">
-	<div class="form-group">
-		<label for="name">Naam:</label>
-		<input name="name" type="text" id="name" <?php if (isset($_POST['submitRegister'])) { ?>
-		       value="<?php echo $_POST['name'];
-		       } ?>" class="form-control">
+<div class="site-wrapper">
+	<div class="container">
+
+
+		<span>Heeft u al een account? </span><a href="login.php">Ga naar de login pagina.</a>
+
+		<form action="<?= $_SERVER['PHP_SELF']; ?>" method="POST">
+			<div class="form-group">
+				<label for="name">Naam:</label>
+				<input name="name" type="text" id="name" <?php if (isset($_POST['submitRegister'])) { ?>
+				       value="<?php echo $_POST['name'];
+				       } ?>" class="form-control">
+			</div>
+			<div class="form-group">
+				<label for="password">Wachtwoord:</label>
+				<input name="password" type="password" id="password" <?php if (isset($_POST['submitRegister'])) { ?>
+				       value="<?php echo $_POST['password'];
+				       } ?>" class="form-control">
+			</div>
+
+			<input type="submit" name="submitRegister" id="submit" class="btn btn-info" value="Registreer">
+
+		</form>
+
 	</div>
-	<div class="form-group">
-		<label for="password">Wachtwoord:</label>
-		<input name="password" type="password" id="password" <?php if (isset($_POST['submitRegister'])) { ?>
-		       value="<?php echo $_POST['password'];
-		       } ?>" class="form-control">
-	</div>
+</div>
 
-	<input type="submit" name="submitRegister" id="submit" class="btn btn-info" value="Registreer">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/buildMap.js"></script>
+<script src="assets/js/buildGrid.js"></script>
+<script src="assets/js/customMap.js"></script>
+<script src="assets/js/getLocation.js"></script>
+<script src="assets/js/main.js"></script>
 
-</form>
-
-//TODO FOOTER
+</body>
+</html>
