@@ -24,5 +24,4 @@ function getCurrentGrid(marker) {
         } else if (i == gridArray.length - 1) {
             console.log("You are not in the grid.")
         }
-    }
-}
+    }}
