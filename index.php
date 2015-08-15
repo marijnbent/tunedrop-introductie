@@ -1,20 +1,9 @@
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>TuneDrop</title>
-    <!-- Bootstrap core CSS -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <link href="assets/css/cover.css" rel="stylesheet">
-    <!-- Google Maps API -->
-    <script src="https://maps.googleapis.com/maps/api/js"></script>
+    <?php require_once('assets/php/head.php'); ?>
 </head>
 <body>
+
 <div class="site-wrapper">
     <div class="site-wrapper-inner">
         <div class="cover-container">
@@ -23,8 +12,8 @@
                     <h2 class="masthead-brand">TuneDrop</h2>
                     <nav>
                         <ul class="nav masthead-nav ">
-                            <li><a href="index.html">Kaart</a></li>
-                            <li class="active"><a href="overview.html">Overzicht</a></li>
+                            <li class="active"><a href="index.html">Kaart</a></li>
+                            <li><a href="overview.html">Overzicht</a></li>
                             <li><a href="instructions.html">Instructies</a></li>
                             <li><a href="statistics.html">Statistieken</a></li>
                             <li><a href="info.html">Info</a></li>
@@ -33,9 +22,9 @@
                 </div>
             </div>
             <div class="inner cover">
-                <h4 class="page-title">Overzicht</h4>
+                <h4 class="page-title">Kaart</h4>
 
-                <p class="lead">Hier komt de overzicht kaart.</p>
+                <p class="lead">Dit is de home pagina waar de game word gespeeld</p>
 
                 <div id="map-canvas"></div>
 
@@ -48,6 +37,7 @@
         </div>
     </div>
 </div>
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
 <script src="assets/js/buildMap.js"></script>
@@ -55,5 +45,6 @@
 <script src="assets/js/customMap.js"></script>
 <script src="assets/js/getLocation.js"></script>
 <script src="assets/js/main.js"></script>
+
 </body>
 </html>

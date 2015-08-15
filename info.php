@@ -1,18 +1,6 @@
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>TuneDrop</title>
-    <!-- Bootstrap core CSS -->
-    <link href="assets/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <link href="assets/css/cover.css" rel="stylesheet">
-    <!-- Google Maps API -->
-    <script src="https://maps.googleapis.com/maps/api/js"></script>
+    <?php require_once('assets/php/head.php'); ?>
 </head>
 <body>
 
@@ -26,17 +14,20 @@
                         <ul class="nav masthead-nav ">
                             <li><a href="index.html">Kaart</a></li>
                             <li><a href="overview.html">Overzicht</a></li>
-                            <li class="active"><a href="instructions.html">Instructies</a></li>
+                            <li><a href="instructions.html">Instructies</a></li>
                             <li><a href="statistics.html">Statistieken</a></li>
-                            <li><a href="info.html">Info</a></li>
+                            <li class="active"><a href="info.html">Info</a></li>
                         </ul>
                     </nav>
                 </div>
             </div>
             <div class="inner cover">
-                <h4 class="page-title">Instructies</h4>
+                <h4 class="page-title">Info</h4>
 
-                <p class="lead">Hier komen de instructies voor de game</p>
+                <p class="lead">Bitches ain't shit but hoes and tricks.
+                    Lick on these nuts and suck the dick.
+                    Gets the fuck out after you're done.
+                    And I hops in my ride to make a quick run.</p>
             </div>
             <!--<div class="mastfoot">-->
             <!--<div class="inner">-->
