@@ -39,7 +39,7 @@ if (isset($_POST['submitRegister'])) {
 
 ?>
 
-<?php require_once 'assets/header.php'; ?>
+//TODO HEADER
 
 	<span>Heeft u al een account? </span><a href="login.php">Ga naar de login pagina.</a>
 
@@ -48,12 +48,6 @@ if (isset($_POST['submitRegister'])) {
 			<label for="name">Naam:</label>
 			<input name="name" type="text" id="name" <?php if (isset($_POST['submitRegister'])) { ?>
 			       value="<?php echo $_POST['name'];
-			       } ?>" class="form-control">
-		</div>
-		<div class="form-group">
-			<label for="email">Email:</label>
-			<input name="email" type="email" id="email" <?php if (isset($_POST['submitRegister'])) { ?>
-			       value="<?php echo $_POST['email'];
 			       } ?>" class="form-control">
 		</div>
 		<div class="form-group">
@@ -67,4 +61,4 @@ if (isset($_POST['submitRegister'])) {
 
 	</form>
 
-<?php require_once 'assets/footer.php'; ?>
+//TODO FOOTER

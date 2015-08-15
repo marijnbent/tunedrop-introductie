@@ -33,18 +33,28 @@ if (isset($_POST['submit'])) {
 
 	//Checks if the returned array is empty and if the email and password match the input value's.
 	if ($correctPassword == $inputPassword) {
+		//Create basic sessions
+		$_SESSION["loggedIn"] = true;
 		$_SESSION["teamId"] = $user[0]['id'];
-		$_SESSION['teamPhoto'] = $user[0]['photo'];
 		$_SESSION['teamName'] = $user[0]['name'];
-		$_SESSION['teamSelfChosenTeamName'] = $user[0]['selfChosenTeamName'];
-		$_SESSION['loggedIn'] = true;
 
+		//If this is first login, go to the wizard
 		if ($user[0]['firstTimeLogin'] == 0) {
 			header("Location: wizard.php");
+			//Aan het eind van wizard firstTimeLogin als 1 zetten als we foto hebben en teamnaam etc.
 			exit;
+			//Else, we can start the game
+		} else if ($user[0]['firstTimeLogin'] == 1 ) {
+
+			$_SESSION['teamSelfChosenTeamName'] = $user[0]['selfChosenTeamName'];
+			$_SESSION['teamPhoto'] = $user[0]['photo'];
+
+			header("Location: index.php");
+			exit;
+		} else {
+			echo "An error occurred. Please contact the school.";
 		}
-		header("Location: index.php");
-		exit;
+
 	} else {
 		//If there is no match, show message with the result.
 		$danger = "Inloggen is niet gelukt. Probeer het opnieuw.";
