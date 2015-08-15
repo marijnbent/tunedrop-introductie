@@ -12,11 +12,11 @@
                     <h2 class="masthead-brand">TuneDrop</h2>
                     <nav>
                         <ul class="nav masthead-nav ">
-                            <li><a href="index.html">Kaart</a></li>
-                            <li><a href="overview.html">Overzicht</a></li>
-                            <li class="active"><a href="instructions.html">Instructies</a></li>
-                            <li><a href="statistics.html">Statistieken</a></li>
-                            <li><a href="info.html">Info</a></li>
+                            <li><a href="index.php">Kaart</a></li>
+                            <li><a href="overview.php">Overzicht</a></li>
+                            <li class="active"><a href="instructions.php">Instructies</a></li>
+                            <li><a href="statistics.php">Statistieken</a></li>
+                            <li><a href="info.php">Info</a></li>
                         </ul>
                     </nav>
                 </div>
