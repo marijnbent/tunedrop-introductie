@@ -50,3 +50,27 @@ function queryToArray($result, $config = 0)
     //Return array so we can use it.
     return $resultQuery;
 }
+
+/**
+ *
+ * Filter the data!
+ *
+ * @param $data
+ * @param $dbLink
+ * @return string
+ *
+ */
+function dataFilter($data, $dbLink)
+{
+    // remove whitespaces from begining and end
+    $data = trim($data);
+
+    // apply stripslashes to pevent double escape if magic_quotes_gpc is enabled
+    if(get_magic_quotes_gpc())
+    {
+        $data = stripslashes($data);
+    }
+    // connection is required before using this function
+    $data = mysqli_real_escape_string($dbLink, $data);
+    return $data;
+}
