@@ -31,7 +31,11 @@ function getCurrentGrid(marker) {
             currentGridTeamIdAjax();
             break;
         } else if (i == gridArray.length - 1) {
-            console.log("You are not in the grid.")
+            $("#interaction-section")
+                .empty()
+                .append($('<tr>')
+                    .html('Please enter the grid nyuggu')
+                )
         }
     }
 }
@@ -67,10 +71,5 @@ function currentGridTeamIdAjaxHandler(data) {
         squareInteractionEnemy(data);
     } else {
         //ERROR
-        $("#interaction-section")
-            .empty()
-            .append($('<tr>')
-                .html('Please enter the grid nyuggu')
-            )
     }
 }
