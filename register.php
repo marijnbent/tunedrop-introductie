@@ -43,10 +43,6 @@ if (isset($_POST['submitRegister'])) {
 	<title>TuneDrop</title>
 	<!-- Bootstrap core CSS -->
 	<link href="assets/css/bootstrap.min.css" rel="stylesheet">
-	<!-- Custom styles for this template -->
-	<link href="assets/css/cover.css" rel="stylesheet">
-	<!-- Google Maps API -->
-	<script src="https://maps.googleapis.com/maps/api/js"></script>
 </head>
 <body>
 

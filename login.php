@@ -9,7 +9,7 @@ require_once 'assets/php/password-validation.php';
 
 //Checking if you're already logged in. If you are, sends you back to the secured page.
 if (isset($_SESSION['loggedIn'])) {
-	header("Location: index.html");
+	header("Location: index.php");
 	exit;
 }
 
@@ -46,7 +46,7 @@ if (isset($_POST['submit'])) {
 
 			//If this is first login, go to the wizard
 			if ($user[0]['firstTimeLogin'] == 0) {
-				header("Location: wizard.php");
+				header("Location: teamaccount.php");
 				//Aan het eind van wizard firstTimeLogin als 1 zetten als we foto hebben en teamnaam etc.
 				exit;
 				//Else, we can start the game
@@ -81,10 +81,7 @@ if (isset($_POST['submit'])) {
 	<title>TuneDrop</title>
 	<!-- Bootstrap core CSS -->
 	<link href="assets/css/bootstrap.min.css" rel="stylesheet">
-	<!-- Custom styles for this template -->
-	<link href="assets/css/cover.css" rel="stylesheet">
-	<!-- Google Maps API -->
-	<script src="https://maps.googleapis.com/maps/api/js"></script>
+
 </head>
 <body>
 

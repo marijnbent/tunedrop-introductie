@@ -39,6 +39,8 @@
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
+<!-- Do we need this file? -->
 <script src="assets/js/bootstrap.min.js"></script>
 <script src="assets/js/buildMap.js"></script>
 <script src="assets/js/buildGrid.js"></script>
