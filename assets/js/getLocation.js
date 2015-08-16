@@ -58,13 +58,13 @@ function currentGridTeamIdAjaxHandler(data) {
     console.log(data);
     if (data[0].teamId == 1) {
         //THE SQUARE IS EMPTY
-        console.log('leeg grid');
+        squareInteractionEmpty(data);
     } else if (data[0].teamId == 2) {
         //THE SQUARE BELONGS TO YOUR TEAM
-        console.log('jouw grid');
+        squareInteractionFriendly(data);
     } else if (data[0].teamId != 2) {
         //THE SQUARE BELONGS TO AN ENEMY TEAM
-        console.log('enemy grid');
+        squareInteractionEnemy(data);
     } else {
         //ERROR
         console.log('Something went wrong');
