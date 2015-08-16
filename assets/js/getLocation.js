@@ -67,6 +67,10 @@ function currentGridTeamIdAjaxHandler(data) {
         squareInteractionEnemy(data);
     } else {
         //ERROR
-        console.log('Something went wrong');
+        $("#interaction-section")
+            .empty()
+            .append($('<tr>')
+                .html('Please enter the grid nyuggu')
+            )
     }
 }
