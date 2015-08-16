@@ -27,6 +27,7 @@
                 <p class="lead">Dit is de home pagina waar de game word gespeeld</p>
 
                 <div id="map-canvas"></div>
+                <div id="interaction-section"></div>
 
             </div>
             <!--<div class="mastfoot">-->
@@ -46,6 +47,7 @@
 <script src="assets/js/buildGrid.js"></script>
 <script src="assets/js/customMap.js"></script>
 <script src="assets/js/getLocation.js"></script>
+<script src="assets/js/interactionHandler.js"></script>
 <script src="assets/js/main.js"></script>
 
 </body>
