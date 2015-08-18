@@ -2,6 +2,15 @@ var map;
 var gridArray = [];
 var currentGrid = {};
 
+var teamIdColor = {
+    2: "#ff0000", //red
+    3: "#318DF7", //blue
+    4: "#F79B31", //orange
+    5: "#31F738", //green
+    10: "#F1F731", //yellow
+    1: "#ffffff" //neutral
+
+};
 
 $(init);
 
