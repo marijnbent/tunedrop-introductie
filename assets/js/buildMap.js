@@ -140,6 +140,9 @@ function buildMap() {
             });
         });
 
+        //Lets create the firebase connection and display the markers
+        firebaseInit();
+
         //After building the map, get the grid and build it.
         getGrid();
     }

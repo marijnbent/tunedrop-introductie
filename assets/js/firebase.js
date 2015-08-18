@@ -69,9 +69,15 @@ function addMarker(location) {
     markers.push(marker);
 }
 
-function addColorToGrid(gridId) {
+function addColorToGrid(gridIdMarker) {
     // Background color for gridId
+    gridArray[gridIdMarker].fillColor = "#FF0000";
+    gridArray[gridIdMarker].fillOpacity = "1";
+    console.log(gridIdMarker);
+    console.log(gridArray[gridIdMarker].fillColor);
+    console.log(gridArray[gridIdMarker]);
 }
+
 
 function sendCurrentPosition(myDataRef) {
 //Save databaselocation for points
