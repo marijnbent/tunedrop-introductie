@@ -24,6 +24,8 @@ if (isset($_POST['submit'])) {
 
 		$_SESSION['teamSelfChosenTeamName'] = $_POST['name'];
 		$_SESSION['teamPhoto'] = $_POST['photo'];
+		setcookie("teamSelfChosenTeamName", $_POST['name'], time()+360000);  /* expire in 100 hour */
+		setcookie("teamPhoto", $_POST['photo'], time()+360000);  /* expire in 100 hour */
 
 		header("Location: index.php");
 		exit;

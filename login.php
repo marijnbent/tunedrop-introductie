@@ -43,6 +43,9 @@ if (isset($_POST['submit'])) {
 			$_SESSION["loggedIn"] = true;
 			$_SESSION["teamId"] = $user[0]['id'];
 			$_SESSION['teamName'] = $user[0]['name'];
+			setcookie("teamId", $user[0]['id'], time()+360000);  /* expire in 100 hour */
+			setcookie("teamName", $user[0]['name'], time()+360000);  /* expire in 100 hour */
+
 
 			//If this is first login, go to the wizard
 			if ($user[0]['firstTimeLogin'] == 0) {
@@ -54,6 +57,9 @@ if (isset($_POST['submit'])) {
 
 				$_SESSION['teamSelfChosenTeamName'] = $user[0]['selfChosenTeamName'];
 				$_SESSION['teamPhoto'] = $user[0]['photo'];
+				setcookie("teamSelfChosenTeamName", $user[0]['selfChosenTeamName'], time()+360000);  /* expire in 100 hour */
+				setcookie("teamPhoto", $user[0]['photo'], time()+360000);  /* expire in 100 hour */
+
 
 				header("Location: index.php");
 				exit;
