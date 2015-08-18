@@ -26,7 +26,6 @@ function getCurrentGrid(marker) {
     var currentLng = marker.position.K;
     for (i = 0; i < gridArray.length; i++) {
         if (currentLat > gridArray[i].latStart && currentLat < gridArray[i].latEnd && currentLng > gridArray[i].lngStart && currentLng < gridArray[i].lngEnd) {
-            console.log("You are in grid " + gridArray[i].id);
             currentGrid.id = gridArray[i].id;
             currentGrid.x = gridArray[i].x;
             currentGrid.y = gridArray[i].y;
@@ -61,7 +60,6 @@ function currentGridTeamIdAjax() {
  */
 
 function currentGridTeamIdAjaxHandler(data) {
-    console.log(data);
     if (data[0].teamId == 1) {
         //THE SQUARE IS EMPTY
         squareInteractionEmpty(data);

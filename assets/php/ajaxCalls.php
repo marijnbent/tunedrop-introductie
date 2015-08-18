@@ -4,30 +4,30 @@ require_once("db.php");
 
 
 if (isset($_GET['config'])) {
-	$c = $_GET['config'];
-	switch ($c) {
-		//Gets the general grid as a playing field
-		case 0:
-			$count = 0;
-			$jsonArray = [];
-			$query = "SELECT g.id, g.latStart, g.latEnd, g.lngStart, g.lngEnd, g.X, g.Y FROM grids g";
-			$queryResult = queryToDatabase($connect, $query);
-			foreach ($queryResult as $row) {
-				$jsonArray[$count]['gridId'] = $row['id'];
-				$jsonArray[$count]['latStart'] = $row['latStart'];
-				$jsonArray[$count]['lngStart'] = $row['lngStart'];
-				$jsonArray[$count]['latEnd'] = $row['latEnd'];
-				$jsonArray[$count]['lngEnd'] = $row['lngEnd'];
-				$jsonArray[$count]['x'] = $row['X'];
-				$jsonArray[$count]['y'] = $row['Y'];
-				$count++;
-			}
-			header('Content-Type: application/json');
-			echo json_encode($jsonArray);
-			exit;
+    $c = $_GET['config'];
+    switch ($c) {
+        //Gets the general grid as a playing field
+        case 0:
+            $count = 0;
+            $jsonArray = [];
+            $query = "SELECT g.id, g.latStart, g.latEnd, g.lngStart, g.lngEnd, g.X, g.Y FROM grids g";
+            $queryResult = queryToDatabase($connect, $query);
+            foreach ($queryResult as $row) {
+                $jsonArray[$count]['gridId'] = $row['id'];
+                $jsonArray[$count]['latStart'] = $row['latStart'];
+                $jsonArray[$count]['lngStart'] = $row['lngStart'];
+                $jsonArray[$count]['latEnd'] = $row['latEnd'];
+                $jsonArray[$count]['lngEnd'] = $row['lngEnd'];
+                $jsonArray[$count]['x'] = $row['X'];
+                $jsonArray[$count]['y'] = $row['Y'];
+                $count++;
+            }
+            header('Content-Type: application/json');
+            echo json_encode($jsonArray);
+            exit;
 
-			break;
-		case 1:
+            break;
+        case 1:
             //Gets the team id for the grid you're currently in
             $currentGrid = $_GET['currentgrid'];
             $query = "SELECT teamId FROM grids WHERE id = " . $currentGrid . ";";
@@ -37,19 +37,29 @@ if (isset($_GET['config'])) {
             echo json_encode($queryResult);
             exit;
 
-			break;
-		case 2:
+            break;
+        case 2:
+            //Checks if team owns adjacent squares
+            $x = $_GET['x'];
+            $y = $_GET['y'];
+            $checkContent['checkXMinus'] = $x - 1;
+            $checkContent['checkXPlus'] = $x + 1;
+            $checkContent['checkYMinus'] = $y - 1;
+            $checkContent['checkYPlus'] = $y + 1;
+            $query = "SELECT teamId FROM grids WHERE teamId = AND (`Y` = 18 AND (`X` = 4 OR `X` = 6)) OR teamId = 2 AND (`X` = 5 AND (`Y` = 17 OR `Y` = 19))GROUP BY teamId";
 
-			break;
-		case 3:
 
-			break;
-		case 4:
 
-			break;
-		case 5:
+            break;
+        case 3:
 
-			break;
-	}
+            break;
+        case 4:
+
+            break;
+        case 5:
+
+            break;
+    }
 
 } //Closing function
