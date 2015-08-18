@@ -71,10 +71,30 @@ function addMarker(location) {
 
 function addColorToGrid(gridIdMarker) {
     // Background color for gridId
-    gridArray[gridIdMarker].fillColor = "#FF0000";
-    gridArray[gridIdMarker].fillOpacity = "1";
-    console.log(gridIdMarker);
-    console.log(gridArray[gridIdMarker].fillColor);
+    gridIdMarker = gridIdMarker - 1;
+    var rectangle;
+    gridArray[gridIdMarker].setMap(null);
+    rectangle = new google.maps.Rectangle({
+        strokeOpacity: 1,
+        strokeWeight: 0.2,
+        strokeColor: '#000000',
+        id: gridIdMarker,
+        latStart: gridArray[gridIdMarker].latStart,
+        latEnd: gridArray[gridIdMarker].latEnd,
+        lngStart: gridArray[gridIdMarker].lngStart,
+        lngEnd: gridArray[gridIdMarker].lngEnd,
+        x: gridArray[gridIdMarker].x,
+        y: gridArray[gridIdMarker].y,
+        fillColor: '#FF0000',
+        fillOpacity: 0.3,
+        map: map,
+        bounds: new google.maps.LatLngBounds(
+            //Starting coordinates (latStart, lngStart)
+            new google.maps.LatLng(gridArray[gridIdMarker].latStart, gridArray[gridIdMarker].lngStart),
+            //Ending coordinates (latEnd, lngEnd)
+            new google.maps.LatLng(gridArray[gridIdMarker].latEnd, gridArray[gridIdMarker].lngEnd))
+    });
+    gridArray[gridIdMarker] = rectangle;
     console.log(gridArray[gridIdMarker]);
 }
 

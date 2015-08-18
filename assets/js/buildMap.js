@@ -2,7 +2,7 @@ function buildMap() {
 
 //Map variables
 
-    var minZoomLevel = 13;
+    var minZoomLevel = 1;
     var maxZoomLevel = 16;
     var center = new google.maps.LatLng(51.924507, 4.477739);
     var testMarker = new google.maps.LatLng(51.924507, 4.477739);
@@ -31,29 +31,29 @@ function buildMap() {
         });
 
         // Bounds for Rotterdam playarea
-        var strictBounds = new google.maps.LatLngBounds(
-            new google.maps.LatLng(51.880173, 4.412449),
-            new google.maps.LatLng(51.940173, 4.508449)
-        );
+//        var strictBounds = new google.maps.LatLngBounds(
+//            new google.maps.LatLng(51.880173, 4.412449),
+//            new google.maps.LatLng(51.940173, 4.508449)
+//        );
 
         // Listen for the drag event
-        google.maps.event.addListener(map, 'drag', function () {
-            if (strictBounds.contains(map.getCenter())) return;
-
-            // We're out of bounds - Move the map back within the bounds
-            var c = map.getCenter(),
-                x = c.lng(),
-                y = c.lat(),
-                maxX = strictBounds.getNorthEast().lng(),
-                maxY = strictBounds.getNorthEast().lat(),
-                minX = strictBounds.getSouthWest().lng(),
-                minY = strictBounds.getSouthWest().lat();
-            if (x < minX) x = minX;
-            if (x > maxX) x = maxX;
-            if (y < minY) y = minY;
-            if (y > maxY) y = maxY;
-            map.setCenter(new google.maps.LatLng(y, x));
-        });
+//        google.maps.event.addListener(map, 'drag', function () {
+//            if (strictBounds.contains(map.getCenter())) return;
+//
+//            // We're out of bounds - Move the map back within the bounds
+//            var c = map.getCenter(),
+//                x = c.lng(),
+//                y = c.lat(),
+//                maxX = strictBounds.getNorthEast().lng(),
+//                maxY = strictBounds.getNorthEast().lat(),
+//                minX = strictBounds.getSouthWest().lng(),
+//                minY = strictBounds.getSouthWest().lat();
+//            if (x < minX) x = minX;
+//            if (x > maxX) x = maxX;
+//            if (y < minY) y = minY;
+//            if (y > maxY) y = maxY;
+//            map.setCenter(new google.maps.LatLng(y, x));
+//        });
 
         // InfoWindow content
         var contentWindow =
