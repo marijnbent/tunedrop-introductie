@@ -35,7 +35,7 @@ function requestMarkerLocations(pointRef) {
     var fireData;
 
     pointRef.on("value", function (snapshot) {
-        console.log(snapshot.val());
+        //All points from firebase
         fireData = snapshot.val();
 
         //Delete old markers
@@ -47,11 +47,10 @@ function requestMarkerLocations(pointRef) {
         for (var i = 0; i < 636; i++) { //TODO DO WE NEED THIS?
             //Don't create a marker if gridId isn't in the firebase
             if (fireData[i] != null) {
-                console.log(fireData[i]);
                 var marker = fireData[i];
                 var latlng = new google.maps.LatLng(marker.lat, marker.lng);
                 addMarker(latlng);
-                addColorToGrid(marker.gridId)
+                addColorToGrid(marker.gridId, marker.teamId)
             }
         }
     }, function (errorObject) {
@@ -69,10 +68,19 @@ function addMarker(location) {
     markers.push(marker);
 }
 
-function addColorToGrid(gridIdMarker) {
+function addColorToGrid(gridIdMarker, teamIdMarker) {
     // Background color for gridId
     gridIdMarker = gridIdMarker - 1;
     var rectangle;
+
+    ////COOKIESHIT
+    ////Get teamId from cookie
+    //var teamIdFromCookie = getCookie('teamId');
+    ////Save it in variable
+    //var teamColor = teamIdColor[teamIdFromCookie];
+
+    var teamColor = teamIdColor[teamIdMarker];
+
     gridArray[gridIdMarker].setMap(null);
     rectangle = new google.maps.Rectangle({
         strokeOpacity: 1,
@@ -85,7 +93,7 @@ function addColorToGrid(gridIdMarker) {
         lngEnd: gridArray[gridIdMarker].lngEnd,
         x: gridArray[gridIdMarker].x,
         y: gridArray[gridIdMarker].y,
-        fillColor: '#FF0000',
+        fillColor: teamColor,
         fillOpacity: 0.3,
         map: map,
         bounds: new google.maps.LatLngBounds(
@@ -95,7 +103,6 @@ function addColorToGrid(gridIdMarker) {
             new google.maps.LatLng(gridArray[gridIdMarker].latEnd, gridArray[gridIdMarker].lngEnd))
     });
     gridArray[gridIdMarker] = rectangle;
-    console.log(gridArray[gridIdMarker]);
 }
 
 

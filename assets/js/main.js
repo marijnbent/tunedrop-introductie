@@ -9,7 +9,6 @@ var teamIdColor = {
     5: "#31F738", //green
     10: "#F1F731", //yellow
     1: "#ffffff" //neutral
-
 };
 
 $(init);
@@ -31,5 +30,21 @@ function getGrid(){
     });
 }
 
-
+/**
+ *
+ * Script from w3schools, read the value of a cookie.
+ *
+ * @param cname
+ * @returns {string}
+ */
+function getCookie(cname) {
+    var name = cname + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0; i<ca.length; i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1);
+        if (c.indexOf(name) == 0) return c.substring(name.length,c.length);
+    }
+    return "";
+}
 
