@@ -1,19 +1,6 @@
-var map;
 var markers = [];
 
-init();
-google.maps.event.addDomListener(window, 'load', init);
-
-
-function init() {
-
-    //Google maps initialization
-    var mapOptions = {
-        center: {lat: 51.924420, lng: 4.477733},
-        zoom: 14
-    };
-    map = new google.maps.Map(document.getElementById('map-canvas'),
-        mapOptions);
+function firebaseInit() {
 
     //Setting up connection with Firebase
     var myDataRef = new Firebase('https://tunedrop.firebaseio.com/');
@@ -22,22 +9,22 @@ function init() {
     var pointRef = myDataRef.child("points");
 
     //Send data to firebase when form is submitted
-    $("#form").submit(function (event) {
-        event.preventDefault();
+//    $("#form").submit(function (event) {
+//        event.preventDefault();
+//
+//        var lat = $('#lat').val();
+//        var lng = $('#lng').val();
+//        var teamId = $('#teamId').val();
+//        var photo = $('#photo').val();
+//        var gridId = $('#gridId').val();
 
-        var lat = $('#lat').val();
-        var lng = $('#lng').val();
-        var teamId = $('#teamId').val();
-        var photo = $('#photo').val();
-        var gridId = $('#gridId').val();
-
-        //Create new objects with gridId as key, so it's dynamic
-        var markerInfo = {};
-        markerInfo[gridId] = {teamId: teamId, photo: photo, lat: lat, lng: lng, gridId: gridId};
-
-        //And push it to the Firebase
-        pointRef.update(markerInfo);
-    });
+//        //Create new objects with gridId as key, so it's dynamic
+//        var markerInfo = {};
+//        markerInfo[gridId] = {teamId: teamId, photo: photo, lat: lat, lng: lng, gridId: gridId};
+//
+//        //And push it to the Firebase
+//        pointRef.update(markerInfo);
+    // });
 
     requestMarkerLocations(pointRef);
 }

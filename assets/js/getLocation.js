@@ -27,14 +27,16 @@ function getCurrentGrid(marker) {
     for (i = 0; i < gridArray.length; i++) {
         if (currentLat > gridArray[i].latStart && currentLat < gridArray[i].latEnd && currentLng > gridArray[i].lngStart && currentLng < gridArray[i].lngEnd) {
             console.log("You are in grid " + gridArray[i].id);
-            currentGrid = gridArray[i].id;
+            currentGrid.id = gridArray[i].id;
+            currentGrid.x = gridArray[i].x;
+            currentGrid.y = gridArray[i].y;
             currentGridTeamIdAjax();
             break;
         } else if (i == gridArray.length - 1) {
             $("#interaction-section")
                 .empty()
                 .append($('<tr>')
-                    .html('Please enter the grid nyuggu')
+                    .html('Please enter the grid')
                 )
         }
     }
@@ -48,7 +50,7 @@ function currentGridTeamIdAjax() {
     $.ajax({
         dataType: "json",
         url: 'assets/php/ajaxCalls.php',
-        data: {config: 1, currentgrid: currentGrid},
+        data: {config: 1, currentgrid: currentGrid.id},
         success: currentGridTeamIdAjaxHandler
     });
 }

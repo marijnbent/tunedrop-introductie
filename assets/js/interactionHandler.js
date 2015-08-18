@@ -5,7 +5,8 @@ function squareInteractionEmpty(data) {
         .empty()
         .append($('<tr>')
             .html('Het grid is leeg yo')
-        )
+        );
+    console.log(currentGrid);
 }
 
 function squareInteractionFriendly(data) {

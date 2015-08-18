@@ -43,10 +43,12 @@
 
 <!-- Do we need this file? -->
 <script src="assets/js/bootstrap.min.js"></script>
+<script src='https://cdn.firebase.com/js/client/2.2.1/firebase.js'></script>
 <script src="assets/plugin/jQueryFileUpload/js/vendor/jquery.ui.widget.js"></script>
 <script src="assets/plugin/jQueryFileUpload/js/jquery.iframe-transport.js"></script>
 <script src="assets/plugin/jQueryFileUpload/js/jquery.fileupload.js"></script>
 
+<script src="assets/js/firebase.js"></script>
 <script src="assets/js/buildMap.js"></script>
 <script src="assets/js/buildGrid.js"></script>
 <script src="assets/js/customMap.js"></script>
