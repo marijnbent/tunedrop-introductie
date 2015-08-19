@@ -3,8 +3,13 @@
  */
 
 function getLocation() {
+    console.log("///////- getLocation started -////////");
+
     navigator.geolocation.getCurrentPosition(function (position) {
-        var currentLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        //var currentLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+
+        //Beated the system!
+        var currentLocation = new google.maps.LatLng(51.921149, 4.47033);
         var marker = new google.maps.Marker({
             position: currentLocation,
             map: map
@@ -64,18 +69,20 @@ function currentGridTeamIdAjaxHandler(data) {
 
     //Get teamId from cookie
     var teamIdFromCookie = getCookie('teamId');
-    console.log("I've changed some stuff here. Interactive teamId by cookies.");
 
     if (data[0].teamId == 1) {
-        //THE SQUARE IS EMPTY
+        console.log('THE SQUARE IS EMPTY');
         squareInteractionEmpty(data);
     } else if (data[0].teamId == teamIdFromCookie) { // <-- right there.
-        //THE SQUARE BELONGS TO YOUR TEAM
+        console.log('THE SQUARE BELONGS TO YOUR TEAM');
         squareInteractionFriendly(data);
     } else if (data[0].teamId != 2) {
-        //THE SQUARE BELONGS TO AN ENEMY TEAM
+        console.log('THE SQUARE BELONGS TO AN ENEMY TEAM');
         squareInteractionEnemy(data);
     } else {
-        //ERROR
+        console.log('ERROR');
     }
+
+    console.log("///////- getLocation ended -////////");
+
 }

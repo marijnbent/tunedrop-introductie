@@ -22,17 +22,12 @@ function requestMarkerLocations(pointRef) {
         //All points from firebase
         fireData = snapshot.val();
 
-        console.log("Firedata: ");
-        console.log(fireData);
-
         //Delete old markers
         for (var ii = 0; ii < markers.length; ii++) {
             markers[ii].setMap(null);
         }
 
         $.each(fireData, function (nameOfObject, objectData) {
-            console.log(nameOfObject);
-            console.log(objectData);
             if (objectData.active == 1) {
                 var latlng = new google.maps.LatLng(objectData.lat, objectData.lng);
                 addMarker(latlng);
