@@ -2,29 +2,13 @@ var markers = [];
 
 function firebaseInit() {
 
+    console.log("///////- Firebase started -////////")
+
     //Setting up connection with Firebase
     var myDataRef = new Firebase('https://tunedrop.firebaseio.com/');
 
     //Save databaselocation for points
     var pointRef = myDataRef.child("points");
-
-    //Send data to firebase when form is submitted
-//    $("#form").submit(function (event) {
-//        event.preventDefault();
-//
-//        var lat = $('#lat').val();
-//        var lng = $('#lng').val();
-//        var teamId = $('#teamId').val();
-//        var photo = $('#photo').val();
-//        var gridId = $('#gridId').val();
-
-//        //Create new objects with gridId as key, so it's dynamic
-//        var markerInfo = {};
-//        markerInfo[gridId] = {teamId: teamId, photo: photo, lat: lat, lng: lng, gridId: gridId};
-//
-//        //And push it to the Firebase
-//        pointRef.update(markerInfo);
-    // });
 
     requestMarkerLocations(pointRef);
 }
@@ -38,21 +22,28 @@ function requestMarkerLocations(pointRef) {
         //All points from firebase
         fireData = snapshot.val();
 
+        console.log("Firedata: ");
+        console.log(fireData);
+
         //Delete old markers
         for (var ii = 0; ii < markers.length; ii++) {
             markers[ii].setMap(null);
         }
 
-        //For each gridId, add marker
-        for (var i = 0; i < 636; i++) { //TODO DO WE NEED THIS?
-            //Don't create a marker if gridId isn't in the firebase
-            if (fireData[i] != null) {
-                var marker = fireData[i];
-                var latlng = new google.maps.LatLng(marker.lat, marker.lng);
+        $.each(fireData, function (nameOfObject, objectData) {
+            console.log(nameOfObject);
+            console.log(objectData);
+            if (objectData.active == 1) {
+                var latlng = new google.maps.LatLng(objectData.lat, objectData.lng);
                 addMarker(latlng);
-                addColorToGrid(marker.gridId, marker.teamId)
+                addColorToGrid(objectData.gridId, objectData.teamId)
             }
-        }
+        });
+
+
+        console.log("///////- Firebase ended -////////")
+
+
     }, function (errorObject) {
         console.log("The read failed: " + errorObject.code);
     });
@@ -72,12 +63,6 @@ function addColorToGrid(gridIdMarker, teamIdMarker) {
     // Background color for gridId
     gridIdMarker = gridIdMarker - 1;
     var rectangle;
-
-    ////COOKIESHIT
-    ////Get teamId from cookie
-    //var teamIdFromCookie = getCookie('teamId');
-    ////Save it in variable
-    //var teamColor = teamIdColor[teamIdFromCookie];
 
     var teamColor = teamIdColor[teamIdMarker];
 
@@ -103,6 +88,7 @@ function addColorToGrid(gridIdMarker, teamIdMarker) {
             new google.maps.LatLng(gridArray[gridIdMarker].latEnd, gridArray[gridIdMarker].lngEnd))
     });
     gridArray[gridIdMarker] = rectangle;
+
 }
 
 
@@ -118,3 +104,29 @@ function sendCurrentPosition(myDataRef) {
 //And push it to the Firebase
     currentPositionRef.update(teamPosition);
 }
+
+
+////COOKIESHIT
+////Get teamId from cookie
+//var teamIdFromCookie = getCookie('teamId');
+////Save it in variable
+//var teamColor = teamIdColor[teamIdFromCookie];
+
+
+//Send data to firebase when form is submitted SHIT
+//    $("#form").submit(function (event) {
+//        event.preventDefault();
+//
+//        var lat = $('#lat').val();
+//        var lng = $('#lng').val();
+//        var teamId = $('#teamId').val();
+//        var photo = $('#photo').val();
+//        var gridId = $('#gridId').val();
+
+//        //Create new objects with gridId as key, so it's dynamic
+//        var markerInfo = {};
+//        markerInfo[gridId] = {teamId: teamId, photo: photo, lat: lat, lng: lng, gridId: gridId};
+//
+//        //And push it to the Firebase
+//        pointRef.update(markerInfo);
+// });
