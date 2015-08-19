@@ -33,3 +33,7 @@ function squareInteractionEnemy(data) {
             .html('Dit is hostile. Maar mag je deze overnemen?')
         )
 }
+
+function connectedSquaresHandler(data) {
+    console.log('AJAX is faster than Javascript.. How to handle this?')
+}

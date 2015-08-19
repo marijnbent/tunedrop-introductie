@@ -49,17 +49,17 @@ if (isset($_GET['config'])) {
 			$checkYMinus = $y - 1;
 			$checkYPlus = $y + 1;
 
-			$checkSurroundingGrids = "
-SELECT
-CASE WHEN EXISTS
-(SELECT teamId FROM grids WHERE
+
+			$query = "
+SELECT teamId FROM grids WHERE
 teamId = '" . $teamId . "' AND ((`Y` = '" . $y . "' AND (`X` = '" . $checkXMinus . "' OR `X` = '" . $checkXPlus . "'))
 OR (`X` = '" . $x . "' AND (`Y` = '" . $checkYMinus . "' OR `Y` = '" . $checkYPlus . "')))
-GROUP BY teamId)
-THEN 'TRUE'
-ELSE 'FALSE'
-END
-            ";
+GROUP BY teamId";
+			$queryResult = queryToDatabase($connect, $query);
+			$queryResult = queryToArray($queryResult);
+			header('Content-Type: application/json');
+			echo json_encode($queryResult);
+			exit;
 
 			break;
 		case 3:
