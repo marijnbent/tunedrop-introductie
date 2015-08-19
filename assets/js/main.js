@@ -5,6 +5,9 @@
 var map;
 var gridArray = [];
 var currentGrid = {};
+var currentTeamId = getCookie('teamId');
+var currentTeamPhoto = getCookie('teamPhoto');
+var currentTeamSelfChosenTeamName = getCookie('teamSelfChosenTeamName');
 
 var teamIdColor = {
     2: "#ff0000", //red

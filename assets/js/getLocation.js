@@ -67,13 +67,10 @@ function currentGridTeamIdAjax() {
 
 function currentGridTeamIdAjaxHandler(data) {
 
-    //Get teamId from cookie
-    var teamIdFromCookie = getCookie('teamId');
-
     if (data[0].teamId == 1) {
         console.log('THE SQUARE IS EMPTY');
         squareInteractionEmpty(data);
-    } else if (data[0].teamId == teamIdFromCookie) { // <-- right there.
+    } else if (data[0].teamId == currentTeamId) { // <-- right there.
         console.log('THE SQUARE BELONGS TO YOUR TEAM');
         squareInteractionFriendly(data);
     } else if (data[0].teamId != 2) {
@@ -82,7 +79,5 @@ function currentGridTeamIdAjaxHandler(data) {
     } else {
         console.log('ERROR');
     }
-
-    console.log("///////- getLocation ended -////////");
 
 }

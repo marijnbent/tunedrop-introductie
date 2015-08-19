@@ -1,5 +1,4 @@
 function squareInteractionEmpty(data) {
-    console.log(currentGrid);
     $("#interaction-section")
         .empty()
         .append($('<tr>')
@@ -9,7 +8,7 @@ function squareInteractionEmpty(data) {
     $.ajax({
         dataType: "json",
         url: 'assets/php/ajaxCalls.php',
-        data: {config: 2, x: currentGrid.x, y: currentGrid.y, teamId: getCookie('teamId')},
+        data: {config: 2, x: currentGrid.x, y: currentGrid.y, teamId: currentTeamId},
         success: connectedSquaresHandler(data)
     });
 }
@@ -35,5 +34,7 @@ function squareInteractionEnemy(data) {
 }
 
 function connectedSquaresHandler(data) {
-    console.log('AJAX is faster than Javascript.. How to handle this?')
+    console.log('//ConnectedSquaresHandler//');
+    console.log(data);
+
 }
