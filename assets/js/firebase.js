@@ -64,9 +64,13 @@ function addColorToGrid(gridIdMarker, teamIdMarker) {
     gridIdMarker = gridIdMarker - 1;
     var rectangle;
 
+    //Get teamcolor from main.js for the holding team
     var teamColor = teamIdColor[teamIdMarker];
 
+    //Delete rectangle which is about to be replaced with new color
     gridArray[gridIdMarker].setMap(null);
+
+    //Create new rectangle with the appropriate background color
     rectangle = new google.maps.Rectangle({
         strokeOpacity: 1,
         strokeWeight: 0.2,
@@ -87,6 +91,8 @@ function addColorToGrid(gridIdMarker, teamIdMarker) {
             //Ending coordinates (latEnd, lngEnd)
             new google.maps.LatLng(gridArray[gridIdMarker].latEnd, gridArray[gridIdMarker].lngEnd))
     });
+
+    //Add new grid to array.
     gridArray[gridIdMarker] = rectangle;
 
 }

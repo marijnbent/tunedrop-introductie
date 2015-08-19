@@ -1,3 +1,7 @@
+/**
+ * Config.js :-)
+ */
+
 var map;
 var gridArray = [];
 var currentGrid = {};
