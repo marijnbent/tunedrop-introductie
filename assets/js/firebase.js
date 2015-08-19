@@ -112,11 +112,7 @@ function sendCurrentPosition(myDataRef) {
 }
 
 
-////COOKIESHIT
-////Get teamId from cookie
-//var teamIdFromCookie = getCookie('teamId');
-////Save it in variable
-//var teamColor = teamIdColor[teamIdFromCookie];
+
 
 
 //Send data to firebase when form is submitted SHIT

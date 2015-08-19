@@ -20,11 +20,12 @@ function getLocation() {
  */
 
 function getCurrentGrid(marker) {
-    //K = Longitude, G = Latitude
+    //G = Latitude, K = Longitude
     //WARNING: Google Maps API changes these up quite often, be sure to check!
     var currentLat = marker.position.G;
     var currentLng = marker.position.K;
-    for (i = 0; i < gridArray.length; i++) {
+    for (var i = 0; i < gridArray.length; i++) {
+        //TODO: What happend here?
         if (currentLat > gridArray[i].latStart && currentLat < gridArray[i].latEnd && currentLng > gridArray[i].lngStart && currentLng < gridArray[i].lngEnd) {
             currentGrid.id = gridArray[i].id;
             currentGrid.x = gridArray[i].x;
@@ -36,7 +37,7 @@ function getCurrentGrid(marker) {
                 .empty()
                 .append($('<tr>')
                     .html('Please enter the grid')
-                )
+            )
         }
     }
 }
@@ -60,10 +61,15 @@ function currentGridTeamIdAjax() {
  */
 
 function currentGridTeamIdAjaxHandler(data) {
+
+    //Get teamId from cookie
+    var teamIdFromCookie = getCookie('teamId');
+    console.log("I've changed some stuff here. Interactive teamId by cookies.");
+
     if (data[0].teamId == 1) {
         //THE SQUARE IS EMPTY
         squareInteractionEmpty(data);
-    } else if (data[0].teamId == 2) {
+    } else if (data[0].teamId == teamIdFromCookie) { // <-- right there.
         //THE SQUARE BELONGS TO YOUR TEAM
         squareInteractionFriendly(data);
     } else if (data[0].teamId != 2) {
