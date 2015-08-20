@@ -28,11 +28,11 @@ if (isset($_POST['submit'])) {
 			$errors[] = 'File size must be under 10 MB';
 		}
 		if (empty($errors) == true) {
-			define ('SITE_ROOT', realpath(dirname(__FILE__)));
-			move_uploaded_file($file_tmp, SITE_ROOT . "/assets/img/uploaded/" . $file_name);
+//			define ('SITE_ROOT', realpath(dirname(__FILE__)));
+			move_uploaded_file($file_tmp, "assets/img/uploaded/" . $file_name);
 
 			//TODO: CHECK PATH FOR REAL SITE. ADD SITE_ROOT
-			$path = "/github/tunedrop-introductie/assets/img/uploaded/" . $file_name;
+			$path = "assets/img/uploaded/" . $file_name;
 		} else {
 			$path = "http://www.hogeschoolrotterdam.nl/images/logo.png";
 		}
