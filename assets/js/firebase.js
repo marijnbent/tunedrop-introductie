@@ -48,12 +48,14 @@ function requestMarkerLocations(pointRef) {
 //Create marker with the known location
 
 
-function addMarker(location, teamIdIcon) {
+function addMarker(location, teamIdMarker) {
 
-    var teamIcon = teamIdIcon[teamIdIcon];
+    var teamIcon = teamIdIcon[teamIdMarker];
+    console.log(teamIcon);
 
     var marker = new google.maps.Marker({
         position: location,
+        icon: teamIcon,
         map: map
     });
     markers.push(marker);

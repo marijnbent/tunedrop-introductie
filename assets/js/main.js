@@ -19,11 +19,11 @@ var teamIdColor = {
 };
 
 var teamIdIcon = {
-    2: "red.png", //red
-    3: "blue.png", //blue
-    4: "orange.png", //orange
-    5: "green.png", //green
-    10: "yellow.png", //yellow
+    2: "assets/img/icon/teamRedIcon.png", //red
+    3: "assets/img/icon/marijnmarker.png", //blue
+    4: "assets/img/icon/marijnmarker.png", //orange
+    5: "assets/img/icon/marijnmarker.png", //green
+    10: "assets/img/icon/marijnmarker.png", //yellow
     1: "no-icon.png" //neutral
 };
 
