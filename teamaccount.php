@@ -14,18 +14,37 @@ if (!isset($_SESSION["loggedIn"])) {
 }
 if (isset($_POST['submit'])) {
 
-	if (!empty($_POST['teamName']) && !empty($_POST['photo'])) {
+	if (!empty($_POST['teamName']) && !empty($_FILES['photo'])) {
 		$name = dataFilter($_POST['teamName'], $dbLink);
-		$photo = $_POST['photo'];
 
-		$update = "UPDATE `teams` SET selfChosenTeamName = '" . $name . "', photo = '" . $photo . "', firstTimeLogin = 1 WHERE id = 8";
+		$errors = array();
+		$file_name = $_FILES['photo']['name'];
+		$file_size = $_FILES['photo']['size'];
+		$file_tmp = $_FILES['photo']['tmp_name'];
+		$file_type = $_FILES['photo']['type'];
+
+
+		if ($file_size > 10097152) {
+			$errors[] = 'File size must be under 10 MB';
+		}
+		if (empty($errors) == true) {
+			define ('SITE_ROOT', realpath(dirname(__FILE__)));
+			move_uploaded_file($file_tmp, SITE_ROOT . "/assets/img/uploaded/" . $file_name);
+
+			//TODO: CHECK PATH FOR REAL SITE. ADD SITE_ROOT
+			$path = "/github/tunedrop-introductie/assets/img/uploaded/" . $file_name;
+		} else {
+			$path = "http://www.hogeschoolrotterdam.nl/images/logo.png";
+		}
+
+		$update = "UPDATE `teams` SET selfChosenTeamName = '" . $name . "', photo = '" . $path . "', firstTimeLogin = 1 WHERE id = '" . $_SESSION['teamId'] . "'";
 
 		queryToDatabase($dbLink, $update);
 
-		$_SESSION['teamSelfChosenTeamName'] = $_POST['name'];
-		$_SESSION['teamPhoto'] = $_POST['photo'];
-		setcookie("teamSelfChosenTeamName", $_POST['name'], time()+360000);  /* expire in 100 hour */
-		setcookie("teamPhoto", $_POST['photo'], time()+360000);  /* expire in 100 hour */
+		$_SESSION['teamSelfChosenTeamName'] = $_POST['teamName'];
+		$_SESSION['teamPhoto'] = $path;
+		setcookie("teamSelfChosenTeamName", $_POST['teamName'], time()+360000);  /* expire in 100 hour */
+		setcookie("teamPhoto", $path, time()+360000);  /* expire in 100 hour */
 
 		header("Location: index.php");
 		exit;
@@ -67,19 +86,22 @@ if (isset($_POST['submit'])) {
 
 				<div id="teaminfo">
 
-					<form action="<?= $_SERVER['PHP_SELF']; ?>" method="POST">
+					<form action="<?= $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data">
 						<div class="form-group">
 							<label for="teamName">Teamnaam:</label>
 							<input name="teamName" type="text" id="teamName" class="form-control" required>
+
 							<p>Verzin je eigen teamnaam welke uiteindelijk in de statistieken wordt weergeven.</p>
 						</div>
 						<div class="form-group">
 							<label for="photo">Teamfoto:</label>
-							<input name="photo" type="text" id="photo" class="form-control" required>
+							<input type="file" name="photo" id="photo" class="form-control" accept="image/*" required/>
+
 							<p>Maak een leuke groepsfoto!</p>
 						</div>
 
 						<input type="submit" name="submit" id="submit" class="btn btn-default" value="Verzenden">
+
 						<p>Let op: je kunt dit later niet meer aanpassen.</p>
 
 					</form>
