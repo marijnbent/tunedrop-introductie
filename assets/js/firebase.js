@@ -30,7 +30,7 @@ function requestMarkerLocations(pointRef) {
         $.each(fireData, function (nameOfObject, objectData) {
             if (objectData.active == 1) {
                 var latlng = new google.maps.LatLng(objectData.lat, objectData.lng);
-                addMarker(latlng);
+                addMarker(latlng, objectData.teamId);
                 addColorToGrid(objectData.gridId, objectData.teamId)
             }
         });
@@ -46,7 +46,12 @@ function requestMarkerLocations(pointRef) {
 }
 
 //Create marker with the known location
-function addMarker(location) {
+
+
+function addMarker(location, teamIdIcon) {
+
+    var teamIcon = teamIdIcon[teamIdIcon];
+
     var marker = new google.maps.Marker({
         position: location,
         map: map
