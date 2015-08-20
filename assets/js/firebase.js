@@ -33,6 +33,9 @@ function requestMarkerLocations(pointRef) {
                 addMarker(latlng, objectData.teamId);
                 addColorToGrid(objectData.gridId, objectData.teamId)
             }
+            if (objectData.gridId == currentGrid) {
+                getLocation()
+            }
         });
 
 
@@ -51,7 +54,6 @@ function requestMarkerLocations(pointRef) {
 function addMarker(location, teamIdMarker) {
 
     var teamIcon = teamIdIcon[teamIdMarker];
-    console.log(teamIcon);
 
     var marker = new google.maps.Marker({
         position: location,
@@ -134,3 +136,5 @@ function sendCurrentPosition(myDataRef) {
 //        //And push it to the Firebase
 //        pointRef.update(markerInfo);
 // });
+
+
