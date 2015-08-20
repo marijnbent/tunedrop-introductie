@@ -1,16 +1,32 @@
-function squareInteractionEmpty(data) {
-    $("#interaction-section")
-        .empty()
-        .append($('<tr>')
-            .html('Het grid is leeg. Maar mag je deze overnemen?')
-        );
-
+function squareInteractionEmpty() {
     $.ajax({
         dataType: "json",
         url: 'assets/php/ajaxCalls.php',
         data: {config: 2, x: currentGrid.x, y: currentGrid.y, teamId: currentTeamId},
-        success: connectedSquaresHandler(data)
+        success: connectedSquaresHandler
     });
+}
+
+function connectedSquaresHandler(data) {
+    console.log('//ConnectedSquaresHandler//');
+    if (data.length < 1) {
+        $("#interaction-section")
+            .empty()
+            .html('Deze sector is niet aangesloten aan je netwerk. Tough luck cuntnigger.')
+            .append($('<button>')
+                .attr('class', 'interaction-button')
+                .attr('id', 'newpoint')
+                .text('Take-over')
+            );
+        $("#newpoint").on('click', placePointHandler)
+    }
+    else {
+        $("#interaction-section")
+            .empty()
+            .append($('<tr>')
+                .html('Deze sector kan nu worden overgenomen pussy ass bitch.')
+            );
+    }
 }
 
 function squareInteractionFriendly(data) {
@@ -33,8 +49,18 @@ function squareInteractionEnemy(data) {
         )
 }
 
-function connectedSquaresHandler(data) {
-    console.log('//ConnectedSquaresHandler//');
-    console.log(data);
+function placePointHandler(){
+    console.log("click!")
 
+    //MAKE PHOTO
+
+    //SEND TO FIREBASE
+
+    //CHANGE BACKGROUND
+
+    //SEND TO DATABASE
+
+    //RELOADS(PARTIALLY) PAGE
 }
+
+

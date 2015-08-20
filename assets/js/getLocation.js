@@ -69,13 +69,13 @@ function currentGridTeamIdAjaxHandler(data) {
 
     if (data[0].teamId == 1) {
         console.log('THE SQUARE IS EMPTY');
-        squareInteractionEmpty(data);
-    } else if (data[0].teamId == currentTeamId) { // <-- right there.
+        squareInteractionEmpty();
+    } else if (data[0].teamId == currentTeamId) {
         console.log('THE SQUARE BELONGS TO YOUR TEAM');
-        squareInteractionFriendly(data);
-    } else if (data[0].teamId != 2) {
+        squareInteractionFriendly();
+    } else if (data[0].teamId != currentTeamId) {
         console.log('THE SQUARE BELONGS TO AN ENEMY TEAM');
-        squareInteractionEnemy(data);
+        squareInteractionEnemy();
     } else {
         console.log('ERROR');
     }
