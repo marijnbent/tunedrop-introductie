@@ -16,6 +16,7 @@ function getGridHandler(gridData) {
             lngEnd: squareData.lngEnd,
             x: squareData.X,
             y: squareData.Y,
+            teamId: squareData.teamId,
             fillColor: '#FFFFFF',
             fillOpacity: 0.30,
             map: map,

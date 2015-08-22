@@ -34,7 +34,7 @@ function getCurrentGrid(marker) {
             currentGrid.id = gridArray[i].id;
             currentGrid.x = gridArray[i].x;
             currentGrid.y = gridArray[i].y;
-            currentGridTeamIdAjax();
+            currentSquareTeamChecker();
             break;
         } else if (i == gridArray.length - 1) {
             $("#interaction-section")
@@ -47,29 +47,13 @@ function getCurrentGrid(marker) {
 }
 
 /**
- * AJAX call to determine the owner of the grid
- */
-
-function currentGridTeamIdAjax() {
-
-    console.log(gridArray[currentGrid.id].x + 'X');
-    console.log(gridArray[currentGrid.id].y + 'Y');
-
-
-    //$.ajax({
-    //    dataType: "json",
-    //    url: 'assets/php/ajaxCalls.php',
-    //    data: {config: 1, currentgrid: currentGrid.id},
-    //    success: currentGridTeamIdAjaxHandler
-    //});
-}
-
-/**
  * Checks to which team the square belongs (1 = neutral)
  * @param data
  */
 
-function currentGridTeamIdAjaxHandler(data) {
+function currentSquareTeamChecker() {
+
+    currentGrid;
     if (data[0].teamId == 1) {
         squareInteractionEmpty();
     } else if (data[0].teamId == currentTeamId) {
