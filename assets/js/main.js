@@ -32,6 +32,7 @@ var teamIdIcon = {
 //Setting up connection with Firebase
 var myDataRef = new Firebase('https://tunedrop.firebaseio.com/');
 var pointRef = myDataRef.child("points");
+var gridsRef = myDataRef.child("grids");
 
 $.cloudinary.config({ cloud_name: 'tunedrop', api_key: '557355671575436'});
 
@@ -48,7 +49,6 @@ function init(){
 //TODO: Why is this here?
 function getGrid(){
     var gridsObject;
-    var gridsRef = myDataRef.child("grids");
 
     gridsRef.on("value", function (snapshot) {
         //All points from firebase

@@ -100,9 +100,16 @@ function placePointHandler() {
         var markerInfo = {};
         markerInfo[gridId] = {active: 1, teamId: teamId, photo: photo, lat: lat, lng: lng, gridId: gridId, timestamp: timestamp};
 
-
-//        And push it to the Firebase
+        //And push it to the Firebase
         pointRef.update(markerInfo);
+
+        var gridInfo = {};
+        gridInfo[gridId-1] = {teamId: teamId};
+
+        //And push it to the Firebase
+        //gridsRef.set(gridInfo);
+
+        //https://www.firebase.com/docs/web/api/firebase/push.html
 
     }
 
