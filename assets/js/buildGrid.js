@@ -5,7 +5,6 @@
 function getGridHandler(gridData) {
     var rectangle;
     $.each(gridData, function (i, squareData) {
-        console.log(squareData);
         rectangle = new google.maps.Rectangle({
             strokeOpacity: 1,
             strokeWeight: 0.2,
@@ -32,7 +31,6 @@ function getGridHandler(gridData) {
 
     //Lets create the firebase connection and display the markers
     firebaseInit();
-
 
     getLocation();
 }

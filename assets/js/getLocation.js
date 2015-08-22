@@ -8,7 +8,7 @@ function getLocation() {
         //var currentLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
         //Beated the system!
-        var currentLocation = new google.maps.LatLng(51.921149, 4.47033);
+        var currentLocation = new google.maps.LatLng(51.924986, 4.458647);
         var marker = new google.maps.Marker({
             position: currentLocation,
             map: map
@@ -52,12 +52,16 @@ function getCurrentGrid(marker) {
 
 function currentGridTeamIdAjax() {
 
-    $.ajax({
-        dataType: "json",
-        url: 'assets/php/ajaxCalls.php',
-        data: {config: 1, currentgrid: currentGrid.id},
-        success: currentGridTeamIdAjaxHandler
-    });
+    console.log(gridArray[currentGrid.id].x + 'X');
+    console.log(gridArray[currentGrid.id].y + 'Y');
+
+
+    //$.ajax({
+    //    dataType: "json",
+    //    url: 'assets/php/ajaxCalls.php',
+    //    data: {config: 1, currentgrid: currentGrid.id},
+    //    success: currentGridTeamIdAjaxHandler
+    //});
 }
 
 /**
