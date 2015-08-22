@@ -34,6 +34,7 @@ function getCurrentGrid(marker) {
             currentGrid.id = gridArray[i].id;
             currentGrid.x = gridArray[i].x;
             currentGrid.y = gridArray[i].y;
+            currentGrid.teamId = gridArray[i].teamId;
             currentSquareTeamChecker();
             break;
         } else if (i == gridArray.length - 1) {
@@ -53,13 +54,17 @@ function getCurrentGrid(marker) {
 
 function currentSquareTeamChecker() {
 
-    currentGrid;
-    if (data[0].teamId == 1) {
+    console.log(currentGrid);
+    if (currentGrid.teamId == 1) {
+        console.log('neutral');
         squareInteractionEmpty();
-    } else if (data[0].teamId == currentTeamId) {
+    } else if (currentGrid.teamId == currentTeamId) {
+        console.log('friendly');
         squareInteractionFriendly();
-    } else if (data[0].teamId != currentTeamId) {
+    } else if (currentGrid.teamId != currentTeamId) {
+        console.log('enemy');
         squareInteractionEnemy();
     } else {
+        console.log('fubar');
     }
 }
