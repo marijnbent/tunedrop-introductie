@@ -21,20 +21,12 @@ function squareInteractionEmpty() {
     connectedSquaresHandler(connectedSquare);
 }
 
-<<<<<<< HEAD
 
 function connectedSquaresHandler(connectedSquare) {
     if (connectedSquare == true) {
         $("#interaction-section")
             .empty()
             .html('Deze sector is aangesloten aan je netwerk. Neem nu over.')
-=======
-function connectedSquaresHandler(data) {
-    if (data.length < 1) {
-        $("#interaction-section")
-            .empty()
-            .html('Sector X:'+ currentGrid.x + ' Y:'+ currentGrid.y + ' kan niet worden overgenomen.')
->>>>>>> master
             .append($('<button>')
                 .attr('class', 'interaction-button')
                 .attr('id', 'newpoint')
@@ -46,11 +38,7 @@ function connectedSquaresHandler(data) {
         $("#interaction-section")
             .empty()
             .append($('<tr>')
-<<<<<<< HEAD
                 .html('Deze sector is niet verbonden met je netwerk.')
-=======
-                .html('Sector X:'+ currentGrid.x + ' Y: '+ currentGrid.y + ' kan worden overgenomen.')
->>>>>>> master
             );
     }
 }
@@ -60,11 +48,7 @@ function squareInteractionFriendly() {
     $("#interaction-section")
         .empty()
         .append($('<tr>')
-<<<<<<< HEAD
             .html('Deze sector hoort bij jouw netwerk. Ga snel naar een andere sector om deze aan je netwerk toe te voegen.')
-=======
-            .html('Sector X:'+ currentGrid.x + ' Y: '+ currentGrid.y + ' is van jouw team.')
->>>>>>> master
         )
 }
 
@@ -82,6 +66,7 @@ function squareInteractionEnemy(data) {
 
 function placePointHandler() {
     console.log("click!");
+    $("#modal-point-placer").modal('show');
 
 
 
