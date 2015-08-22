@@ -8,6 +8,8 @@ var currentGrid = {};
 var currentTeamId = getCookie('teamId');
 var currentTeamPhoto = getCookie('teamPhoto');
 var currentTeamSelfChosenTeamName = getCookie('teamSelfChosenTeamName');
+var currentPosition;
+
 
 var teamIdColor = {
     2: "#ff0000", //red
@@ -29,6 +31,7 @@ var teamIdIcon = {
 
 //Setting up connection with Firebase
 var myDataRef = new Firebase('https://tunedrop.firebaseio.com/');
+var pointRef = myDataRef.child("points");
 
 $.cloudinary.config({ cloud_name: 'tunedrop', api_key: '557355671575436'});
 

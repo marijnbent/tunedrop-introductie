@@ -3,8 +3,6 @@ var markers = [];
 function firebaseInit() {
 
     //Save databaselocation for points
-    var pointRef = myDataRef.child("points");
-
     requestMarkerLocations(pointRef);
 }
 

@@ -53,6 +53,11 @@ if (isset($_SESSION['loggedIn'])) {
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/fileupload/lib/jquery.ui.widget.js"></script>
+<script src="assets/fileupload/lib/jquery.iframe-transport.js"></script>
+<script src="assets/fileupload/lib/jquery.fileupload.js"></script>
+<script src="assets/fileupload/lib/jquery.cloudinary.js"></script>
+<?php echo cloudinary_js_config(); ?>
 <script src="assets/js/buildMap.js"></script>
 <script src="assets/js/buildGrid.js"></script>
 <script src="assets/js/customMap.js"></script>

@@ -21,7 +21,6 @@ function squareInteractionEmpty() {
     connectedSquaresHandler(connectedSquare);
 }
 
-
 function connectedSquaresHandler(connectedSquare) {
     if (connectedSquare == true) {
         $("#interaction-section")
@@ -31,7 +30,7 @@ function connectedSquaresHandler(connectedSquare) {
                 .attr('class', 'interaction-button')
                 .attr('id', 'newpoint')
                 .text('Take-over')
-        );
+            );
         $("#newpoint").on('click', placePointHandler)
     }
     else {
@@ -39,7 +38,7 @@ function connectedSquaresHandler(connectedSquare) {
             .empty()
             .append($('<tr>')
                 .html('Deze sector is niet verbonden met je netwerk.')
-        );
+            );
     }
 }
 
@@ -49,7 +48,7 @@ function squareInteractionFriendly() {
         .empty()
         .append($('<tr>')
             .html('Deze sector hoort bij jouw netwerk. Ga snel naar een andere sector om deze aan je netwerk toe te voegen.')
-    )
+        )
 }
 
 function squareInteractionEnemy(data) {
@@ -60,19 +59,52 @@ function squareInteractionEnemy(data) {
             .attr('class', 'interaction-button')
             .attr('id', 'removepoint')
             .text('Remove')
-    );
+        );
     $("#removepoint").on('click', removePointHandler)
 }
 
 function placePointHandler() {
-    console.log("click!");
 
+    console.log(currentGrid);
     $("#modal-point-placer").modal('show');
 
-    $('#submitPhoto').on('click', submitPhoto);
-    //$("#modalPlacePoint");
-    //e.preventDefault();
+    $(function () {
+        $('.cloudinary-fileupload')
+            .fileupload({
+            })
+            .on('cloudinarydone', function (e, data) {
+                $("#modal-point-placer").modal('hide');
+                var info = $('<div class="uploaded_info"/>');
+                $(info).append($('<div class="data"/>').append(prettydump(data.result)));
+            });
+    });
 
+    function prettydump(obj) {
+
+        var lat = currentPosition.G;
+        var lng = currentPosition.K;
+        var teamId = currentTeamId;
+        var photo = obj.url;
+        var gridId = currentGrid.id;
+        var timestamp = new Date() / 1000;
+
+        console.log(lat + " latitude");
+        console.log(lng + " longitude");
+        console.log(teamId + " team id");
+        console.log(photo + " photo url");
+        console.log(gridId + " grid id");
+        console.log(timestamp + " timestamp");
+
+
+        //Create new objects with gridId as key, so it's dynamic
+        var markerInfo = {};
+        markerInfo[gridId] = {active: 1, teamId: teamId, photo: photo, lat: lat, lng: lng, gridId: gridId, timestamp: timestamp};
+
+
+//        And push it to the Firebase
+        pointRef.update(markerInfo);
+
+    }
 
     //MAKE PHOTO
 
@@ -85,10 +117,6 @@ function placePointHandler() {
     //RELOADS(PARTIALLY) PAGE
 }
 
-function submitPhoto() {
-    console.log("Dang.");
-    
-}
 
 function removePointHandler() {
 }

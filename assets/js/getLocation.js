@@ -5,12 +5,12 @@
 function getLocation() {
 
     navigator.geolocation.getCurrentPosition(function (position) {
-        //var currentLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        //var currentPosition = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
         //Beated the system!
-        var currentLocation = new google.maps.LatLng(51.924986, 4.458647);
+        currentPosition = new google.maps.LatLng(51.924986, 4.458647);
         var marker = new google.maps.Marker({
-            position: currentLocation,
+            position: currentPosition,
             map: map
         });
         getCurrentGrid(marker)
@@ -54,7 +54,7 @@ function getCurrentGrid(marker) {
 
 function currentSquareTeamChecker() {
 
-    console.log(currentGrid);
+    console.log(currentGrid.teamId);
     if (currentGrid.teamId == 1) {
         console.log('neutral');
         squareInteractionEmpty();
