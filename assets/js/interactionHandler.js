@@ -1,47 +1,32 @@
 function squareInteractionEmpty() {
-    //$.ajax({
-    //    dataType: "json",
-    //    url: 'assets/php/ajaxCalls.php',
-    //    data: {config: 2, x: currentGrid.x, y: currentGrid.y, teamId: currentTeamId},
-    //    success: connectedSquaresHandler
-    //});
 
     //Check all directions
     var Xmin = currentGrid.x - 1;
     var Ymin = currentGrid.y - 1;
     var Xplus = currentGrid.x + 1;
     var Yplus = currentGrid.y + 1;
-
-    var connectedSquare = 0;
-
-    for (var i = 1; i < gridArray.length - 1; i ++) {
-        if ( (gridArray[i].y == currentGrid.y && (gridArray[i].x == Xmin || gridArray[i].x == Xplus)) ||
-            (gridArray[i].x == currentGrid.x && (gridArray[i].y == Ymin || gridArray[i].y == Yplus)) ) {
+    var connectedSquare = false;
+    for (var i = 1; i < gridArray.length - 1; i++) {
+        if ((gridArray[i].y == currentGrid.y && (gridArray[i].x == Xmin || gridArray[i].x == Xplus)) ||
+            (gridArray[i].x == currentGrid.x && (gridArray[i].y == Ymin || gridArray[i].y == Yplus))) {
             if (gridArray[i].teamId == currentTeamId) {
-
                 console.log('Je mag shit overnemen :-)');
-                connectedSquare = 1;
+                connectedSquare = true;
                 break;
             } else {
-                console.log(gridArray[i]);
-                console.log(gridArray[i].teamId);
-                console.log(currentTeamId);
                 console.log('Je mag geen shit overnemen >:-8 ');
             }
         }
     }
+    connectedSquaresHandler(connectedSquare);
 }
 
 
-
-
 function connectedSquaresHandler(connectedSquare) {
-    console.log('//ConnectedSquaresHandler//');
-    console.log(connectedSquare);
-    if (data.length < 1) {
+    if (connectedSquare == true) {
         $("#interaction-section")
             .empty()
-            .html('Deze sector is niet aangesloten aan je netwerk. Tough luck cuntnigger.')
+            .html('Deze sector is aangesloten aan je netwerk. Neem nu over.')
             .append($('<button>')
                 .attr('class', 'interaction-button')
                 .attr('id', 'newpoint')
@@ -53,33 +38,36 @@ function connectedSquaresHandler(connectedSquare) {
         $("#interaction-section")
             .empty()
             .append($('<tr>')
-                .html('Deze sector kan nu worden overgenomen pussy ass bitch.')
+                .html('Deze sector is niet verbonden met je netwerk.')
             );
     }
 }
 
-function squareInteractionFriendly(data) {
+function squareInteractionFriendly() {
     console.log('grid is yours and full');
-    console.log(data);
     $("#interaction-section")
         .empty()
         .append($('<tr>')
-            .html('Dit is jouw grid bro.')
+            .html('Deze sector hoort bij jouw netwerk. Ga snel naar een andere sector om deze aan je netwerk toe te voegen.')
         )
 }
 
 function squareInteractionEnemy(data) {
-    console.log('The enemy team is here');
-    console.log(data);
     $("#interaction-section")
         .empty()
-        .append($('<tr>')
-            .html('Dit is hostile. Maar mag je deze overnemen?')
-        )
+        .html('Deze sector is van een vijandelijk team. Wil je dit punt verwijderen?')
+        .append($('<button>')
+            .attr('class', 'interaction-button')
+            .attr('id', 'removepoint')
+            .text('Remove')
+        );
+    $("#removepoint").on('click', removePointHandler)
 }
 
-function placePointHandler(){
-    console.log("click!")
+function placePointHandler() {
+    console.log("click!");
+
+
 
     //MAKE PHOTO
 
@@ -90,6 +78,10 @@ function placePointHandler(){
     //SEND TO DATABASE
 
     //RELOADS(PARTIALLY) PAGE
+}
+
+function removePointHandler(){
+
 }
 
 
