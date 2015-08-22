@@ -2,8 +2,6 @@ var markers = [];
 
 function firebaseInit() {
 
-    console.log("///////- Firebase started -////////")
-
     //Setting up connection with Firebase
     var myDataRef = new Firebase('https://tunedrop.firebaseio.com/');
 
@@ -37,10 +35,6 @@ function requestMarkerLocations(pointRef) {
                 getLocation()
             }
         });
-
-
-        console.log("///////- Firebase ended -////////")
-
 
     }, function (errorObject) {
         console.log("The read failed: " + errorObject.code);
@@ -87,7 +81,7 @@ function addColorToGrid(gridIdMarker, teamIdMarker) {
         x: gridArray[gridIdMarker].x,
         y: gridArray[gridIdMarker].y,
         fillColor: teamColor,
-        fillOpacity: 0.3,
+        fillOpacity: 0.5,
         map: map,
         bounds: new google.maps.LatLngBounds(
             //Starting coordinates (latStart, lngStart)
@@ -101,7 +95,6 @@ function addColorToGrid(gridIdMarker, teamIdMarker) {
 
 }
 
-
 function sendCurrentPosition(myDataRef) {
 //Save databaselocation for points
     var currentPositionRef = myDataRef.child("currentPosition");
@@ -114,10 +107,6 @@ function sendCurrentPosition(myDataRef) {
 //And push it to the Firebase
     currentPositionRef.update(teamPosition);
 }
-
-
-
-
 
 //Send data to firebase when form is submitted SHIT
 //    $("#form").submit(function (event) {
@@ -136,5 +125,3 @@ function sendCurrentPosition(myDataRef) {
 //        //And push it to the Firebase
 //        pointRef.update(markerInfo);
 // });
-
-
