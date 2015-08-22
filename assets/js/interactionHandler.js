@@ -5,6 +5,24 @@ function squareInteractionEmpty() {
         data: {config: 2, x: currentGrid.x, y: currentGrid.y, teamId: currentTeamId},
         success: connectedSquaresHandler
     });
+
+    //Check all directions
+    var Xmin = currentGrid.x - 1;
+    var Ymin = currentGrid.y - 1;
+    var Xplus = currentGrid.x + 1;
+    var Yplus = currentGrid.y + 1;
+
+    console.log(currentGrid);
+    //console.log(gridArray[currentGrid - 1].y);
+    console.log(gridArray[currentGrid.id - 1]);
+    if ((currentGrid.y == gridArray[currentGrid.id - 1].y && (Xmin == gridArray[currentGrid.id - 1].x || Xplus == gridArray[currentGrid.id - 1].x)) ||
+        (currentGrid.x == gridArray[currentGrid.id - 1].x && (Ymin == gridArray[currentGrid.id - 1].y || Yplus == gridArray[currentGrid.id - 1].y))) {
+        console.log('Match of niet bitch');
+    } else {
+        console.log('Matcht niet bitch of KUT');
+
+    }
+
 }
 
 function connectedSquaresHandler(data) {
