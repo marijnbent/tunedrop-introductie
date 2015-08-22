@@ -1,10 +1,10 @@
 function squareInteractionEmpty() {
-    $.ajax({
-        dataType: "json",
-        url: 'assets/php/ajaxCalls.php',
-        data: {config: 2, x: currentGrid.x, y: currentGrid.y, teamId: currentTeamId},
-        success: connectedSquaresHandler
-    });
+    //$.ajax({
+    //    dataType: "json",
+    //    url: 'assets/php/ajaxCalls.php',
+    //    data: {config: 2, x: currentGrid.x, y: currentGrid.y, teamId: currentTeamId},
+    //    success: connectedSquaresHandler
+    //});
 
     //Check all directions
     var Xmin = currentGrid.x - 1;
@@ -12,21 +12,28 @@ function squareInteractionEmpty() {
     var Xplus = currentGrid.x + 1;
     var Yplus = currentGrid.y + 1;
 
-    console.log(currentGrid);
-    //console.log(gridArray[currentGrid - 1].y);
-    console.log(gridArray[currentGrid.id - 1]);
-    if ((currentGrid.y == gridArray[currentGrid.id - 1].y && (Xmin == gridArray[currentGrid.id - 1].x || Xplus == gridArray[currentGrid.id - 1].x)) ||
-        (currentGrid.x == gridArray[currentGrid.id - 1].x && (Ymin == gridArray[currentGrid.id - 1].y || Yplus == gridArray[currentGrid.id - 1].y))) {
-        console.log('Match of niet bitch');
-    } else {
-        console.log('Matcht niet bitch of KUT');
+    var connectedSquare = 0;
 
+    for (var i = 1; i < gridArray.length - 1; i ++) {
+        if ( (gridArray[i].y == currentGrid.y && (gridArray[i].x == Xmin || gridArray[i].x == Xplus)) || (gridArray[i].x == currentGrid.x && (gridArray[i].y == Ymin || gridArray[i].y == Yplus)) ){
+            if (gridArray[i].teamId == currentTeamId) {
+                console.log('Je mag shit overnemen :-)');
+                connectedSquare = 1;
+                break;
+            } else {
+                console.log('Je mag geen shit overnemen >:-8 ');
+            }
+        }
     }
 
 }
 
-function connectedSquaresHandler(data) {
+
+
+
+function connectedSquaresHandler(connectedSquare) {
     console.log('//ConnectedSquaresHandler//');
+    console.log(connectedSquare);
     if (data.length < 1) {
         $("#interaction-section")
             .empty()
