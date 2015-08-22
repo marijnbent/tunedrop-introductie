@@ -28,6 +28,11 @@ function getGridHandler(gridData) {
             console.log(this.x + "X, " + this.y + "Y.");
         });
     });
+
+    //Lets create the firebase connection and display the markers
+    firebaseInit();
+
+
     getLocation();
 }
 

@@ -36,7 +36,7 @@ if (!isset($_SESSION['loggedIn'])) {
 			<div class="inner cover">
 				<h4 class="page-title">Kaart</h4>
 
-				<p class="lead">Dit is de home pagina waar de game word gespeeld</p>
+				<p class="lead">Dit is de home pagina waar de game wordt gespeeld</p>
 
 				<p>Jij bent team '<?= $_SESSION['teamName']; ?>', met het id '<?= $_SESSION['teamId']; ?>'. Jullie naam is
 					'<?= $_SESSION['teamSelfChosenTeamName']; ?>'. Jullie foto is <a

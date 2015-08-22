@@ -27,6 +27,9 @@ var teamIdIcon = {
     1: "no-icon.png" //neutral
 };
 
+//Setting up connection with Firebase
+var myDataRef = new Firebase('https://tunedrop.firebaseio.com/');
+
 $(init);
 
 /**
@@ -39,12 +42,18 @@ function init(){
 
 //TODO: Why is this here?
 function getGrid(){
-    $.ajax({
-        dataType: "json",
-        url: 'assets/php/ajaxCalls.php',
-        data: {config: 0},
-        success: getGridHandler
+    var gridsObject;
+    var gridsRef = myDataRef.child("grids");
+
+    gridsRef.on("value", function (snapshot) {
+        //All points from firebase
+        gridsObject = snapshot.val();
+        getGridHandler(gridsObject);
+
+    }, function (errorObject) {
+        console.log("The read failed: " + errorObject.code);
     });
+
 }
 
 /**

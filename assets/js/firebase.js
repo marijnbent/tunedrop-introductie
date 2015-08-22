@@ -2,9 +2,6 @@ var markers = [];
 
 function firebaseInit() {
 
-    //Setting up connection with Firebase
-    var myDataRef = new Firebase('https://tunedrop.firebaseio.com/');
-
     //Save databaselocation for points
     var pointRef = myDataRef.child("points");
 
@@ -19,6 +16,7 @@ function requestMarkerLocations(pointRef) {
     pointRef.on("value", function (snapshot) {
         //All points from firebase
         fireData = snapshot.val();
+        console.log(fireData);
 
         //Delete old markers
         for (var ii = 0; ii < markers.length; ii++) {
