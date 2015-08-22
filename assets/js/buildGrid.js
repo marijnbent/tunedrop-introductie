@@ -5,17 +5,18 @@
 function getGridHandler(gridData) {
     var rectangle;
     $.each(gridData, function (i, squareData) {
+        console.log(squareData);
         rectangle = new google.maps.Rectangle({
             strokeOpacity: 1,
             strokeWeight: 0.2,
             strokeColor: '#000000',
-            id: squareData.gridId,
+            id: squareData.id,
             latStart: squareData.latStart,
             latEnd: squareData.latEnd,
             lngStart: squareData.lngStart,
             lngEnd: squareData.lngEnd,
-            x: squareData.x,
-            y: squareData.y,
+            x: squareData.X,
+            y: squareData.Y,
             fillColor: '#FFFFFF',
             fillOpacity: 0.30,
             map: map,

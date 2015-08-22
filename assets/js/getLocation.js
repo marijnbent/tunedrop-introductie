@@ -7,8 +7,6 @@ function getLocation() {
     navigator.geolocation.getCurrentPosition(function (position) {
         //var currentLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
-        console.log("// Hardcoded location");
-
         //Beated the system!
         var currentLocation = new google.maps.LatLng(51.921149, 4.47033);
         var marker = new google.maps.Marker({
@@ -43,7 +41,7 @@ function getCurrentGrid(marker) {
                 .empty()
                 .append($('<tr>')
                     .html('Please enter the grid')
-            )
+                )
         }
     }
 }
@@ -53,6 +51,7 @@ function getCurrentGrid(marker) {
  */
 
 function currentGridTeamIdAjax() {
+
     $.ajax({
         dataType: "json",
         url: 'assets/php/ajaxCalls.php',
@@ -67,18 +66,12 @@ function currentGridTeamIdAjax() {
  */
 
 function currentGridTeamIdAjaxHandler(data) {
-
     if (data[0].teamId == 1) {
-        console.log('THE SQUARE IS EMPTY');
         squareInteractionEmpty();
     } else if (data[0].teamId == currentTeamId) {
-        console.log('THE SQUARE BELONGS TO YOUR TEAM');
         squareInteractionFriendly();
     } else if (data[0].teamId != currentTeamId) {
-        console.log('THE SQUARE BELONGS TO AN ENEMY TEAM');
         squareInteractionEnemy();
     } else {
-        console.log('ERROR');
     }
-
 }
