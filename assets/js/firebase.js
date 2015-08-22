@@ -76,6 +76,7 @@ function addColorToGrid(gridIdMarker, teamIdMarker) {
         latEnd: gridArray[gridIdMarker].latEnd,
         lngStart: gridArray[gridIdMarker].lngStart,
         lngEnd: gridArray[gridIdMarker].lngEnd,
+        teamId: gridArray[gridIdMarker].teamId,
         x: gridArray[gridIdMarker].x,
         y: gridArray[gridIdMarker].y,
         fillColor: teamColor,

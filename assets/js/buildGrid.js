@@ -26,7 +26,7 @@ function getGridHandler(gridData) {
         });
         gridArray.push(rectangle);
         google.maps.event.addListener(rectangle, 'click', function () {
-            console.log(this.x + "X, " + this.y + "Y.");
+            console.log(this.y + "Y, " + this.x + "X, " + this.id + " ID.");
         });
     });
 

@@ -15,17 +15,21 @@ function squareInteractionEmpty() {
     var connectedSquare = 0;
 
     for (var i = 1; i < gridArray.length - 1; i ++) {
-        if ( (gridArray[i].y == currentGrid.y && (gridArray[i].x == Xmin || gridArray[i].x == Xplus)) || (gridArray[i].x == currentGrid.x && (gridArray[i].y == Ymin || gridArray[i].y == Yplus)) ){
+        if ( (gridArray[i].y == currentGrid.y && (gridArray[i].x == Xmin || gridArray[i].x == Xplus)) ||
+            (gridArray[i].x == currentGrid.x && (gridArray[i].y == Ymin || gridArray[i].y == Yplus)) ) {
             if (gridArray[i].teamId == currentTeamId) {
+
                 console.log('Je mag shit overnemen :-)');
                 connectedSquare = 1;
                 break;
             } else {
+                console.log(gridArray[i]);
+                console.log(gridArray[i].teamId);
+                console.log(currentTeamId);
                 console.log('Je mag geen shit overnemen >:-8 ');
             }
         }
     }
-
 }
 
 
