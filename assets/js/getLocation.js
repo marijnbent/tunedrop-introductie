@@ -3,10 +3,11 @@
  */
 
 function getLocation() {
-    console.log("///////- getLocation started -////////");
 
     navigator.geolocation.getCurrentPosition(function (position) {
         //var currentLocation = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+
+        console.log("// Hardcoded location");
 
         //Beated the system!
         var currentLocation = new google.maps.LatLng(51.921149, 4.47033);

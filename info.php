@@ -1,3 +1,16 @@
+<?php
+
+//Starts session so we can use the session variables.
+session_start();
+
+//Checking if you're already logged in. If you are, sends you back to the secured page.
+if (isset($_SESSION['loggedIn'])) {
+    header("Location: index.php");
+    exit;
+}
+
+?>
+
 <html lang="en">
 <head>
     <?php require_once('assets/php/head.php'); ?>

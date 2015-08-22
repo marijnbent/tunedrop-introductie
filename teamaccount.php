@@ -43,8 +43,8 @@ if (isset($_POST['submit'])) {
 
 		$_SESSION['teamSelfChosenTeamName'] = $_POST['teamName'];
 		$_SESSION['teamPhoto'] = $path;
-		setcookie("teamSelfChosenTeamName", $_POST['teamName'], time()+360000);  /* expire in 100 hour */
-		setcookie("teamPhoto", $path, time()+360000);  /* expire in 100 hour */
+		setcookie("teamSelfChosenTeamName", $_POST['teamName'], time() + 360000);  /* expire in 100 hour */
+		setcookie("teamPhoto", $path, time() + 360000);  /* expire in 100 hour */
 
 		header("Location: index.php");
 		exit;
@@ -58,59 +58,66 @@ if (isset($_POST['submit'])) {
 
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="">
-	<meta name="author" content="">
+	<?php require_once('assets/php/head.php'); ?>
 
-	<title>TuneDrop</title>
-	<!-- Bootstrap core CSS -->
-	<link href="assets/css/bootstrap.min.css" rel="stylesheet">
 
 </head>
 <body>
-
 <div class="site-wrapper">
-	<div class="container">
+	<div class="site-wrapper-inner">
+		<div class="cover-container">
+			<div class="masthead clearfix">
+				<div class="inner-navbar">
+					<h2 class="masthead-brand">TuneDrop</h2>
+					<nav>
 
-		<div class="row">
-			<section class="col-md-12">
+					</nav>
+				</div>
+			</div>
+			<div class="inner cover">
 
-				<?php if (isset ($warning)) {
-					echo $warning;
-				}
-				if (isset ($danger)) {
-					echo $danger;
-				} ?>
+				<div class="row">
+					<section class="col-md-12">
 
-				<div id="teaminfo">
+						<?php if (isset ($warning)) {
+							echo '<p style="margin-top: 10px; color: #ffffff;">' . $warning . '</p>';
+						}
+						if (isset ($danger)) {
+							echo '<p style="margin-top: 10px; color: #ffffff;">' . $danger . '</p>';
+						} ?>
 
-					<form action="<?= $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data">
-						<div class="form-group">
-							<label for="teamName">Teamnaam:</label>
-							<input name="teamName" type="text" id="teamName" class="form-control" required>
+						<div id="teaminfo">
 
-							<p>Verzin je eigen teamnaam welke uiteindelijk in de statistieken wordt weergeven.</p>
-						</div>
-						<div class="form-group">
-							<label for="photo">Teamfoto:</label>
-							<input type="file" name="photo" id="photo" class="form-control" accept="image/*" required/>
+							<form style="margin-top: 15px;" action="<?= $_SERVER['PHP_SELF']; ?>" method="POST" enctype="multipart/form-data">
+								<div class="form-group">
+									<label for="teamName">Teamnaam:</label>
+									<input name="teamName" type="text" id="teamName" class="form-control" required>
 
-							<p>Maak een leuke groepsfoto!</p>
-						</div>
+									<p>Verzin je eigen teamnaam welke uiteindelijk in de statistieken wordt
+										weergeven.</p>
+								</div>
+								<div class="form-group">
+									<label for="photo">Teamfoto:</label>
+									<input type="file" name="photo" id="photo" class="form-control" accept="image/*"
+									       required/>
 
-						<input type="submit" name="submit" id="submit" class="btn btn-default" value="Verzenden">
+									<p>Maak een leuke groepsfoto!</p>
+								</div>
 
-						<p>Let op: je kunt dit later niet meer aanpassen.</p>
+								<input type="submit" name="submit" id="submit" class="btn btn-default"
+								       value="Verzenden">
 
-					</form>
+								<p>Let op: je kunt dit later niet meer aanpassen.</p>
 
-			</section>
+							</form>
+
+					</section>
+				</div>
+
+			</div>
 		</div>
-
 	</div>
 </div>
-
+</div>
 </body>
 </html>

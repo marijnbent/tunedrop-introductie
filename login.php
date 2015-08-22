@@ -43,8 +43,8 @@ if (isset($_POST['submit'])) {
 			$_SESSION["loggedIn"] = true;
 			$_SESSION["teamId"] = $user[0]['id'];
 			$_SESSION['teamName'] = $user[0]['name'];
-			setcookie("teamId", $user[0]['id'], time()+360000);  /* expire in 100 hour */
-			setcookie("teamName", $user[0]['name'], time()+360000);  /* expire in 100 hour */
+			setcookie("teamId", $user[0]['id'], time() + 360000);  /* expire in 100 hour */
+			setcookie("teamName", $user[0]['name'], time() + 360000);  /* expire in 100 hour */
 
 
 			//If this is first login, go to the wizard
@@ -57,8 +57,8 @@ if (isset($_POST['submit'])) {
 
 				$_SESSION['teamSelfChosenTeamName'] = $user[0]['selfChosenTeamName'];
 				$_SESSION['teamPhoto'] = $user[0]['photo'];
-				setcookie("teamSelfChosenTeamName", $user[0]['selfChosenTeamName'], time()+360000);  /* expire in 100 hour */
-				setcookie("teamPhoto", $user[0]['photo'], time()+360000);  /* expire in 100 hour */
+				setcookie("teamSelfChosenTeamName", $user[0]['selfChosenTeamName'], time() + 360000);  /* expire in 100 hour */
+				setcookie("teamPhoto", $user[0]['photo'], time() + 360000);  /* expire in 100 hour */
 
 
 				header("Location: index.php");
@@ -78,48 +78,57 @@ if (isset($_POST['submit'])) {
 
 <html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="">
-	<meta name="author" content="">
-
-	<title>TuneDrop</title>
-	<!-- Bootstrap core CSS -->
-	<link href="assets/css/bootstrap.min.css" rel="stylesheet">
-
+	<?php require_once('assets/php/head.php'); ?>
 </head>
 <body>
 
 <div class="site-wrapper">
-	<div class="container">
+	<div class="site-wrapper-inner">
+		<div class="cover-container">
+			<div class="masthead clearfix">
+				<div class="inner-navbar">
+					<h2 class="masthead-brand">TuneDrop</h2>
+					<nav>
+						<ul class="nav masthead-nav ">
+							<li><a href="index.php">Kaart</a></li>
+							<li><a href="overview.php">Overzicht</a></li>
+							<li><a href="instructions.php">Instructies</a></li>
+							<li><a href="statistics.php">Statistieken</a></li>
+							<li><a href="info.php">Info</a></li>
+							<li><a href="uploadtest.php">Dat Upload</a></li>
+						</ul>
+					</nav>
+				</div>
+			</div>
+			<div class="inner cover">
+				<div class="row">
+					<section class="col-md-12">
 
-		<div class="row">
-			<section class="col-md-12">
+						<?php if (isset ($warning)) {
+							echo '<p style="margin-top: 10px; color: #ffffff;">' . $warning . '</p>';
+						}
+						if (isset ($danger)) {
+							echo '<p style="margin-top: 10px; color: #ffffff;">' . $danger . '</p>';
+						} ?>
+						<h4 style="margin-top: 15px;">Log in en begin het spel!</h4>
 
-				<?php if (isset ($warning)) {
-					echo $warning;
-				}
-				if (isset ($danger)) {
-					echo $danger;
-				} ?>
+						<form action="<?= $_SERVER['PHP_SELF']; ?>" method="POST">
+							<div class="form-group">
+								<label for="teamName">Teamnaam:</label>
+								<input name="teamName" type="text" id="teamName" class="form-control" required>
+							</div>
+							<div class="form-group">
+								<label for="password">Wachtwoord:</label>
+								<input name="password" type="password" id="password" class="form-control" required>
+							</div>
 
-				<form action="<?= $_SERVER['PHP_SELF']; ?>" method="POST">
-					<div class="form-group">
-						<label for="teamName">Teamnaam:</label>
-						<input name="teamName" type="text" id="teamName" class="form-control" required>
-					</div>
-					<div class="form-group">
-						<label for="password">Wachtwoord:</label>
-						<input name="password" type="password" id="password" class="form-control" required>
-					</div>
+							<input type="submit" name="submit" id="submit" class="btn btn-default" value="Inloggen">
 
-					<input type="submit" name="submit" id="submit" class="btn btn-default" value="Inloggen">
-
-				</form>
-			</section>
+						</form>
+					</section>
+				</div>
+			</div>
 		</div>
-
 	</div>
 </div>
 
