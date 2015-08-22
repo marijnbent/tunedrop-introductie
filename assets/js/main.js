@@ -30,6 +30,8 @@ var teamIdIcon = {
 //Setting up connection with Firebase
 var myDataRef = new Firebase('https://tunedrop.firebaseio.com/');
 
+$.cloudinary.config({ cloud_name: 'tunedrop', api_key: '557355671575436'});
+
 $(init);
 
 /**

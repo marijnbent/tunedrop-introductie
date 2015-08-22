@@ -66,12 +66,8 @@ function squareInteractionEnemy(data) {
 
 function placePointHandler() {
     console.log("click!");
-<<<<<<< HEAD
-    $('#modal-point-placer').modal('show');
 
-=======
     $("#modal-point-placer").modal('show');
->>>>>>> origin/grids-from-firebase
 
     $('#submitPhoto').on('click', submitPhoto);
     //$("#modalPlacePoint");
