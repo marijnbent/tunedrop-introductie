@@ -74,3 +74,24 @@
 //	}
 //
 //} //Closing function
+
+$_FILES['photo'] = $_GET['photo'];
+
+$errors = array();
+$file_name = $_FILES['photo']['name'];
+$file_size = $_FILES['photo']['size'];
+$file_tmp = $_FILES['photo']['tmp_name'];
+$file_type = $_FILES['photo']['type'];
+
+if ($file_size > 10097152) {
+	$errors[] = 'File size must be under 10 MB';
+}
+if (empty($errors) == true) {
+	//define ('SITE_ROOT', realpath(dirname(__FILE__)));
+	move_uploaded_file($file_tmp, "assets/img/uploaded/" . $file_name);
+
+	//TODO: CHECK PATH FOR REAL SITE. ADD SITE_ROOT
+	$path = "assets/img/uploaded/" . $file_name;
+} else {
+	$path = "http://www.hogeschoolrotterdam.nl/images/logo.png";
+}

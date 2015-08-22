@@ -5,7 +5,6 @@ session_start();
 if (!isset($_SESSION['loggedIn'])) {
 	header("Location: login.php");
 	exit;
-	//hoi
 }
 
 ?>
@@ -38,12 +37,49 @@ if (!isset($_SESSION['loggedIn'])) {
 
 				<p class="lead">Dit is de home pagina waar de game wordt gespeeld</p>
 
-				<p>Jij bent team '<?= $_SESSION['teamName']; ?>', met het id '<?= $_SESSION['teamId']; ?>'. Jullie naam is
+				<p>Jij bent team '<?= $_SESSION['teamName']; ?>', met het id '<?= $_SESSION['teamId']; ?>'. Jullie naam
+					is
 					'<?= $_SESSION['teamSelfChosenTeamName']; ?>'. Jullie foto is <a
 						href="<?= $_SESSION['teamPhoto']; ?>">hier</a> te vinden.</p>
 
 				<div id="map-canvas"></div>
 				<div id="interaction-section"></div>
+				<div id="modal-point-placer" class="modal fade">
+					<div class="modal-dialog">
+						<div class="modal-content" style="color: #000000 !important">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+										aria-hidden="true">&times;</span></button>
+								<h4 class="modal-title">Voeg een punt toe</h4>
+							</div>
+							<div class="modal-body">
+								<p>Awesome dat je ons spel speelt!</p>
+
+								<p>Voor dit punt moeten wij natuurlijk wel een leuke teamfoto ontvangen. Maak er een en
+									plaats de punt!</p>
+
+<!--								<div class="form-group">-->
+<!--									<label for="photo">Puntfoto:</label>-->
+<!--									<input type="file" name="photo" id="photo" class="form-control" accept="image/*"-->
+<!--									       required/>-->
+<!--								</div>-->
+
+								<form id="file-form" action="uploader.php" method="POST">
+									<input type="file" id="file-select" name="photos[]" multiple/>
+									<button type="submit" id="upload-button">Upload</button>
+								</form>
+
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal">Sluit</button>
+								<button id="submitPhoto" type="button" class="btn btn-primary">Punt plaatsen</button>
+							</div>
+						</div>
+						<!-- /.modal-content -->
+					</div>
+					<!-- /.modal-dialog -->
+				</div>
+				<!-- /.modal -->
 
 			</div>
 			<!--<div class="mastfoot">-->

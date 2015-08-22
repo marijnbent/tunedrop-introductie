@@ -31,7 +31,7 @@ function connectedSquaresHandler(connectedSquare) {
                 .attr('class', 'interaction-button')
                 .attr('id', 'newpoint')
                 .text('Take-over')
-            );
+        );
         $("#newpoint").on('click', placePointHandler)
     }
     else {
@@ -39,7 +39,7 @@ function connectedSquaresHandler(connectedSquare) {
             .empty()
             .append($('<tr>')
                 .html('Deze sector is niet verbonden met je netwerk.')
-            );
+        );
     }
 }
 
@@ -49,7 +49,7 @@ function squareInteractionFriendly() {
         .empty()
         .append($('<tr>')
             .html('Deze sector hoort bij jouw netwerk. Ga snel naar een andere sector om deze aan je netwerk toe te voegen.')
-        )
+    )
 }
 
 function squareInteractionEnemy(data) {
@@ -60,13 +60,18 @@ function squareInteractionEnemy(data) {
             .attr('class', 'interaction-button')
             .attr('id', 'removepoint')
             .text('Remove')
-        );
+    );
     $("#removepoint").on('click', removePointHandler)
 }
 
 function placePointHandler() {
     console.log("click!");
+    $('#modal-point-placer').modal('show');
 
+
+    $('#submitPhoto').on('click', submitPhoto);
+    //$("#modalPlacePoint");
+    //e.preventDefault();
 
 
     //MAKE PHOTO
@@ -80,8 +85,14 @@ function placePointHandler() {
     //RELOADS(PARTIALLY) PAGE
 }
 
-function removePointHandler(){
-
+function submitPhoto() {
+    console.log("Dang.");
+    
 }
 
+function removePointHandler() {
+}
+function testFunction() {
+    console.log('werkt het?');
+}
 
