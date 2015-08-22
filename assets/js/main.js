@@ -10,20 +10,20 @@ var currentTeamPhoto = getCookie('teamPhoto');
 var currentTeamSelfChosenTeamName = getCookie('teamSelfChosenTeamName');
 
 var teamIdColor = {
-    2: "#ff0000", //red
-    3: "#318DF7", //blue
-    4: "#F79B31", //orange
-    5: "#31F738", //green
-    10: "#F1F731", //yellow
+    2: "#203066", //blue
+    3: "#0D4748", //green
+    4: "#FAB313", //yellow
+    5: "#A8111B", //red
+    10: "#8E3975", //purple
     1: "#ffffff" //neutral
 };
 
 var teamIdIcon = {
-    2: "assets/img/icon/teamRedIcon.png", //red
-    3: "assets/img/icon/marijnmarker.png", //blue
-    4: "assets/img/icon/marijnmarker.png", //orange
-    5: "assets/img/icon/marijnmarker.png", //green
-    10: "assets/img/icon/marijnmarker.png", //yellow
+    2: "assets/img/icon/blueMarker.png", //blue
+    3: "assets/img/icon/greenMarker.png", //green
+    4: "assets/img/icon/yellowMarker.png", //yellow
+    5: "assets/img/icon/redMarker.png", //red
+    10: "assets/img/icon/purpleMarker.png", //purple
     1: "no-icon.png" //neutral
 };
 
