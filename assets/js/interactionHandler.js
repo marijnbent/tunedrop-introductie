@@ -8,11 +8,10 @@ function squareInteractionEmpty() {
 }
 
 function connectedSquaresHandler(data) {
-    console.log('//ConnectedSquaresHandler//');
     if (data.length < 1) {
         $("#interaction-section")
             .empty()
-            .html('Deze sector is niet aangesloten aan je netwerk. Tough luck cuntnigger.')
+            .html('Sector X:'+ currentGrid.x + ' Y:'+ currentGrid.y + ' kan niet worden overgenomen.')
             .append($('<button>')
                 .attr('class', 'interaction-button')
                 .attr('id', 'newpoint')
@@ -24,18 +23,18 @@ function connectedSquaresHandler(data) {
         $("#interaction-section")
             .empty()
             .append($('<tr>')
-                .html('Deze sector kan nu worden overgenomen pussy ass bitch.')
+                .html('Sector X:'+ currentGrid.x + ' Y: '+ currentGrid.y + ' kan worden overgenomen.')
             );
     }
 }
 
-function squareInteractionFriendly(data) {
+function squareInteractionFriendly() {
     console.log('grid is yours and full');
     console.log(data);
     $("#interaction-section")
         .empty()
         .append($('<tr>')
-            .html('Dit is jouw grid bro.')
+            .html('Sector X:'+ currentGrid.x + ' Y: '+ currentGrid.y + ' is van jouw team.')
         )
 }
 
