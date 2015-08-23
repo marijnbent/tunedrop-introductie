@@ -46,6 +46,7 @@ function squareInteractionFriendly() {
     console.log(currentGrid);
 
     console.log('grid is yours and full');
+    console.log(currentGrid);
     $("#interaction-section")
         .empty()
         .append($('<tr>')
@@ -55,7 +56,10 @@ function squareInteractionFriendly() {
 
 function squareInteractionEnemy() {
     console.log(currentGrid);
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/grids-from-firebase
     $("#interaction-section")
         .empty()
         .html('Deze sector is van een vijandelijk team. Wil je dit punt verwijderen?')

@@ -12,21 +12,21 @@ var currentPosition;
 
 
 var teamIdColor = {
-    2: "#ff0000", //red
-    3: "#318DF7", //blue
-    4: "#E80C7A", //pink
-    5: "#31F738", //green
-    10: "#F1F731", //yellow
+    2: "#A8111B", //red
+    3: "#203066", //blue
+    4: "#8E3975", //purple
+    5: "#0D4748", //green
+    10: "#FAB313", //yellow
     1: "#ffffff" //neutral
 };
 
 var teamIdIcon = {
     2: "assets/img/icon/teamRedIcon.png", //red
     3: "assets/img/icon/teamBlueIcon.png", //blue
-    4: "assets/img/icon/teamPinkIcon.png", //pink
+    4: "assets/img/icon/teamPurpleIcon.png", //pink
     5: "assets/img/icon/teamGreenIcon.png", //green
     10: "assets/img/icon/teamYellowIcon.png", //yellow
-    1: "no-icon.png" //neutral
+    1: "assets/img/icon/marijnmarker.png" //neutral
 };
 
 //Setting up connection with Firebase
