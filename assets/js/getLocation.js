@@ -53,7 +53,7 @@ function getCurrentGrid(marker) {
  */
 
 function currentSquareTeamChecker() {
-
+console.log(currentGrid);
     console.log(currentGrid.teamId);
     if (currentGrid.teamId == 1) {
         console.log('neutral');

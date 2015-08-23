@@ -4,7 +4,10 @@
 
 function getGridHandler(gridData) {
     var rectangle;
+    gridArray.length = 0;
+    gridArray[0]= {};
     $.each(gridData, function (i, squareData) {
+        if (squareData != undefined){
         rectangle = new google.maps.Rectangle({
             strokeOpacity: 1,
             strokeWeight: 0.2,
@@ -28,11 +31,11 @@ function getGridHandler(gridData) {
         google.maps.event.addListener(rectangle, 'click', function () {
             console.log(this.y + "Y, " + this.x + "X, " + this.id + " ID.");
         });
+        }
     });
 
     //Lets create the firebase connection and display the markers
     firebaseInit();
-
     getLocation();
 }
 

@@ -13,7 +13,6 @@ function requestMarkerLocations() {
     pointRef.on("value", function (snapshot) {
         //All points from firebase
         fireData = snapshot.val();
-        console.log(fireData);
 
         //Delete old markers
         for (var ii = 0; ii < markers.length; ii++) {
@@ -53,11 +52,12 @@ function addMarker(location, teamIdMarker) {
     markers.push(marker);
 }
 
+//gridIdMarker = JUISTE GRID.
 function addColorToGrid(gridIdMarker, teamIdMarker) {
     // Background color for gridId
-    gridIdMarker = gridIdMarker - 1;
-    var rectangle;
 
+    gridIdMarker = parseInt(gridIdMarker);
+    var rectangle;
     //Get teamcolor from main.js for the holding team
     var teamColor = teamIdColor[teamIdMarker];
 
@@ -89,6 +89,7 @@ function addColorToGrid(gridIdMarker, teamIdMarker) {
 
     //Add new grid to array.
     gridArray[gridIdMarker] = rectangle;
+
 
 }
 

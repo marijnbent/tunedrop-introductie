@@ -43,10 +43,7 @@ function connectedSquaresHandler(connectedSquare) {
 }
 
 function squareInteractionFriendly() {
-    console.log(currentGrid);
 
-    console.log('grid is yours and full');
-    console.log(currentGrid);
     $("#interaction-section")
         .empty()
         .append($('<tr>')
@@ -55,11 +52,8 @@ function squareInteractionFriendly() {
 }
 
 function squareInteractionEnemy() {
-    console.log(currentGrid);
-<<<<<<< HEAD
 
-=======
->>>>>>> origin/grids-from-firebase
+
     $("#interaction-section")
         .empty()
         .html('Deze sector is van een vijandelijk team. Wil je dit punt verwijderen?')
@@ -72,8 +66,6 @@ function squareInteractionEnemy() {
 }
 
 function placePointHandler() {
-
-    console.log(currentGrid);
     $("#modal-point-placer").modal('show');
 
     $(function () {
@@ -111,7 +103,7 @@ function placePointHandler() {
         //And push it to the Firebase
         pointRef.push(markerInfo);
 
-        var changeGridId = gridId - 1;
+        var changeGridId = gridId;
         var gridRef = gridsRef.child(changeGridId);
 
         //And push it to the Firebase
@@ -136,14 +128,14 @@ function placePointHandler() {
 
 function removePointHandler() {
     $.each(fireData, function (nameOfObject, objectData) {
-        if(objectData.gridId == currentGrid.id + 1 && objectData.active == 1){
+        if(objectData.gridId == currentGrid.id && objectData.active == 1){
 
             var singlePointRef = pointRef.child(nameOfObject);
 
             //And push it to the Firebase
             singlePointRef.update({active: 0});
 
-            var changeGridId = objectData.gridId - 1;
+            var changeGridId = objectData.gridId;
 
             var gridRef = gridsRef.child(changeGridId);
 
@@ -152,10 +144,5 @@ function removePointHandler() {
 
         }
     });
-}
-
-
-function testFunction() {
-    console.log('werkt het?');
 }
 
