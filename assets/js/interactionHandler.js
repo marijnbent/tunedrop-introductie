@@ -98,16 +98,17 @@ function placePointHandler() {
 
         //Create new objects with gridId as key, so it's dynamic
         var markerInfo = {};
-        markerInfo[gridId] = {active: 1, teamId: teamId, photo: photo, lat: lat, lng: lng, gridId: gridId, timestamp: timestamp};
+        markerInfo = {active: 1, teamId: teamId, photo: photo, lat: lat, lng: lng, gridId: gridId, timestamp: timestamp};
 
         //And push it to the Firebase
-        pointRef.update(markerInfo);
+        pointRef.push(markerInfo);
 
-        var gridInfo = {};
-        gridInfo[gridId-1] = {teamId: teamId};
+        var changeGridId = gridId - 1;
+        var gridRef = gridsRef.child(changeGridId);
 
         //And push it to the Firebase
-        //gridsRef.set(gridInfo);
+        gridRef.update({teamId: teamId});
+
 
         //https://www.firebase.com/docs/web/api/firebase/push.html
 
