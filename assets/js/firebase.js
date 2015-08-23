@@ -1,4 +1,5 @@
 var markers = [];
+var fireData;
 
 function firebaseInit() {
 
@@ -8,8 +9,6 @@ function firebaseInit() {
 
 //Request all markerlocations from firebase
 function requestMarkerLocations() {
-
-    var fireData;
 
     pointRef.on("value", function (snapshot) {
         //All points from firebase

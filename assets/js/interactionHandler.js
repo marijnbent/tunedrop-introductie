@@ -51,14 +51,14 @@ function squareInteractionFriendly() {
         )
 }
 
-function squareInteractionEnemy(data) {
+function squareInteractionEnemy() {
     $("#interaction-section")
         .empty()
         .html('Deze sector is van een vijandelijk team. Wil je dit punt verwijderen?')
         .append($('<button>')
             .attr('class', 'interaction-button')
             .attr('id', 'removepoint')
-            .text('Remove')
+            .text('Remove this point')
         );
     $("#removepoint").on('click', removePointHandler)
 }
@@ -127,7 +127,14 @@ function placePointHandler() {
 
 
 function removePointHandler() {
+    $.each(fireData, function (nameOfObject, objectData) {
+        if(objectData.gridId == currentGrid.id){
+            console.log(currentGrid.id);
+        }
+    });
 }
+
+
 function testFunction() {
     console.log('werkt het?');
 }
