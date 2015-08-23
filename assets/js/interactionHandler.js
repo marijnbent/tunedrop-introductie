@@ -43,6 +43,8 @@ function connectedSquaresHandler(connectedSquare) {
 }
 
 function squareInteractionFriendly() {
+    console.log(currentGrid);
+
     console.log('grid is yours and full');
     $("#interaction-section")
         .empty()
@@ -52,6 +54,8 @@ function squareInteractionFriendly() {
 }
 
 function squareInteractionEnemy() {
+    console.log(currentGrid);
+
     $("#interaction-section")
         .empty()
         .html('Deze sector is van een vijandelijk team. Wil je dit punt verwijderen?')
@@ -128,8 +132,20 @@ function placePointHandler() {
 
 function removePointHandler() {
     $.each(fireData, function (nameOfObject, objectData) {
-        if(objectData.gridId == currentGrid.id){
-            console.log(currentGrid.id);
+        if(objectData.gridId == currentGrid.id + 1 && objectData.active == 1){
+
+            var singlePointRef = pointRef.child(nameOfObject);
+
+            //And push it to the Firebase
+            singlePointRef.update({active: 0});
+
+            var changeGridId = objectData.gridId - 1;
+
+            var gridRef = gridsRef.child(changeGridId);
+
+            //And push it to the Firebase
+            gridRef.update({teamId: 1});
+
         }
     });
 }

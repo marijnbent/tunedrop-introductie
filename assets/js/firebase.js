@@ -13,7 +13,8 @@ function requestMarkerLocations() {
     pointRef.on("value", function (snapshot) {
         //All points from firebase
         fireData = snapshot.val();
-        console.log('update');
+        console.log(fireData);
+
         //Delete old markers
         for (var ii = 0; ii < markers.length; ii++) {
             markers[ii].setMap(null);
@@ -25,10 +26,10 @@ function requestMarkerLocations() {
                 addMarker(latlng, objectData.teamId);
                 addColorToGrid(objectData.gridId, objectData.teamId)
             }
-            if (objectData.gridId == currentGrid) {
-                console.log('Nog een keer naar getLocation');
-                getLocation()
-            }
+            //if (objectData.gridId == currentGrid) {
+            //    console.log('Nog een keer naar getLocation');
+            //    getLocation()
+            //}
         });
 
     }, function (errorObject) {
