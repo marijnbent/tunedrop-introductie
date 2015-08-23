@@ -3,18 +3,17 @@ var markers = [];
 function firebaseInit() {
 
     //Save databaselocation for points
-    requestMarkerLocations(pointRef);
+    requestMarkerLocations();
 }
 
 //Request all markerlocations from firebase
-function requestMarkerLocations(pointRef) {
+function requestMarkerLocations() {
 
     var fireData;
 
     pointRef.on("value", function (snapshot) {
         //All points from firebase
         fireData = snapshot.val();
-        console.log(fireData);
 
         //Delete old markers
         for (var ii = 0; ii < markers.length; ii++) {
@@ -28,6 +27,7 @@ function requestMarkerLocations(pointRef) {
                 addColorToGrid(objectData.gridId, objectData.teamId)
             }
             if (objectData.gridId == currentGrid) {
+                console.log('Nog een keer naar getLocation');
                 getLocation()
             }
         });
