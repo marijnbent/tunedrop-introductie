@@ -25,7 +25,8 @@ var teamIdIcon = {
     4: "assets/img/icon/teamPurpleIcon.png", //pink
     5: "assets/img/icon/teamGreenIcon.png", //green
     10: "assets/img/icon/teamYellowIcon.png", //yellow
-    1: "assets/img/icon/marijnmarker.png" //neutral
+    1: "assets/img/icon/marijnmarker.png", //neutral
+    person: "assets/img/icon/nigga.png"
 };
 
 //Setting up connection with Firebase

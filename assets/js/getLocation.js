@@ -8,9 +8,10 @@ function getLocation() {
         //var currentPosition = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
         //Beated the system!
-        currentPosition = new google.maps.LatLng(51.924986, 4.458647);
+        currentPosition = new google.maps.LatLng(51.921665, 4.458357);
         var marker = new google.maps.Marker({
             position: currentPosition,
+            icon: teamIdIcon['person'],
             map: map
         });
         getCurrentGrid(marker)
