@@ -122,4 +122,3 @@ function sendCurrentPosition(myDataRef) {
 //
 //        //And push it to the Firebase
 //        pointRef.update(markerInfo);
-// });
