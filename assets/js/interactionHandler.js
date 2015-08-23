@@ -142,6 +142,8 @@ function removePointHandler() {
             //And push it to the Firebase
             gridRef.update({teamId: 1});
 
+            addColorToGrid(objectData.gridId, 1);
+
         }
     });
 }

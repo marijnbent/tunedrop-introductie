@@ -4,7 +4,13 @@
 
 function getGridHandler(gridData) {
     var rectangle;
+
+    for (var i = 1; i < gridArray.length; i++) {
+        gridArray[i].setMap(null);
+    }
+
     gridArray.length = 0;
+    console.log(gridArray);
     gridArray[0]= {};
     $.each(gridData, function (i, squareData) {
         if (squareData != undefined){
