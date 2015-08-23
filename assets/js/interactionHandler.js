@@ -44,6 +44,7 @@ function connectedSquaresHandler(connectedSquare) {
 
 function squareInteractionFriendly() {
     console.log('grid is yours and full');
+    console.log(currentGrid);
     $("#interaction-section")
         .empty()
         .append($('<tr>')
@@ -52,6 +53,7 @@ function squareInteractionFriendly() {
 }
 
 function squareInteractionEnemy() {
+    console.log(currentGrid);
     $("#interaction-section")
         .empty()
         .html('Deze sector is van een vijandelijk team. Wil je dit punt verwijderen?')
